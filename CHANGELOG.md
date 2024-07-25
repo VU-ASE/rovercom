@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/VU-ASE/rovercom/compare/v1.0.0...v1.0.1) (2024-07-25)
+
+
+### Bug Fixes
+
+* ran go mod tidy ([8a6945f](https://github.com/VU-ASE/rovercom/commit/8a6945f8f79851239f12c483648b86672222cfc1))
+
 ## 1.0.0 (2024-07-25)
 
 
