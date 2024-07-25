@@ -10,7 +10,7 @@ on:
 
 jobs:
   generate-packages:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     container:
       image: aselabsvu/dev-root
       volumes:
