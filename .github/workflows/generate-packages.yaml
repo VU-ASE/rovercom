@@ -12,7 +12,7 @@ jobs:
   generate-packages:
     runs-on: ubuntu-20.04
     container:
-      image: aselabsvu/dev
+      image: aselabsvu/dev-root
       volumes:
         - ${{ github.workspace }}:/app
       env:
@@ -25,24 +25,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      # - name: Install Go
-      #   uses: actions/setup-go@v4
-      #   with:
-      #     go-version: "1.21"
-      #     cache: false
-      # - name: Install Node
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: "18.x"
-      # - name: Install Protobuf compiler
-      #   run: sudo apt update && sudo apt install pkg-config protobuf-compiler
-      # - name: "Clean up previous build"
-      #   run: make clean
-
-
+      - run: make clean
       - run: make build
-
-
       - name: Commit generated code
         uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
         with:
