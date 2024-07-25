@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package protobuf_msgs;
+
+option go_package = "ase/pb_module_outputs";
+
+//
+// This file defines the output published by the main car controller.
+// In practice, this output serves as the input for the actuator module.
+//
+
+message ControllerOutput {
+    // Steering angle (-1.0 to 1.0 <-> left - right)
+    float steeringAngle = 2;
+    // Throttle (-1.0 to 1.0 <-> full reverse - full forward)
+    float leftThrottle = 3;
+    float rightThrottle = 4;
+    // Onboard lights (0.0 to 1.0 <-> off - on)
+    bool frontLights = 5;
+    // Fan speed (0.0 to 1.0 <-> off - full speed)
+    float fanSpeed = 6;
+
+    // Useful for debugging
+    float rawError = 7; // the error value before quadratic scaling
+    float scaledError = 8; // the error value after quadratic scaling, but before PID
+}

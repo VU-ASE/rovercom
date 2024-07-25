@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+package protobuf_msgs;
+
+option go_package = "ase/pb_core_messages";
+
+import "core/servicediscovery.proto";
+import "core/tuningstate.proto";
+
+//
+// This wrapper allows us to use generic types and let the receiver switch on the oneof type
+//
+
+message Error {
+    string message = 1;
+}
+
+message coreMessage {
+    oneof msg {
+        Service service = 1;
+        ServiceOrder serviceOrder = 4;
+        TuningState tuningState = 5;
+        TuningStateRequest tuningStateRequest = 6;
+        ServiceListRequest serviceListRequest = 7;
+        ServiceList serviceList = 8;
+        ServiceStatusUpdate serviceStatusUpdate = 9;
+        ServiceInformationRequest serviceInformationRequest = 10;
+        Error error = 11;
+    }
+}
+

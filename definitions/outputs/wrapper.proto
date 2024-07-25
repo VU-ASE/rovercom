@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package protobuf_msgs;
+
+option go_package = "ase/pb_module_outputs";
+
+import "outputs/camera.proto";
+import "outputs/distance.proto";
+import "outputs/speed.proto";
+import "outputs/controller.proto";
+import "outputs/imu.proto";
+import "outputs/battery.proto";
+import "outputs/rpm.proto";
+import "outputs/lux.proto";
+import "outputs/laptime.proto";
+
+//
+// This file containes the wrapper SensorOutput message, that holds one of the sensor/controller output messages
+// Receivers can switch on the oneof field to determine the type of message
+//
+
+message SensorOutput {
+    // Every sensor has a unique ID to support multiple sensors of the same type
+    uint32 sensorId = 1;
+    // Add a timestamp to the output to make debugging, logging and synchronisation easier
+    uint64 timestamp = 2;
+    // Report an error if the sensor is not working correctly (controller can decide to ignore or stop the car)
+    // 0 = no error, any other value = error
+    uint32 status = 3;
+
+    //
+    // Add the output here to make it available to the receiver
+    //
+    oneof sensorOutput {
+        CameraSensorOutput cameraOutput = 4;
+        DistanceSensorOutput distanceOutput = 5;
+        SpeedSensorOutput speedOutput = 6;
+        ControllerOutput controllerOutput = 7;
+        ImuSensorOutput imuOutput = 8;
+        BatterySensorOutput batteryOutput = 9;
+        RpmSensorOutput rpmOuput = 10;
+        LuxSensorOutput luxOutput = 11;
+        LapTimeOutput laptimeOutput = 12;
+    }
+}
+

@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package protobuf_msgs;
+
+option go_package = "ase/pb_infrastructure";
+
+//
+// This file defines the output published by an infrastructure module detecting
+// objects passing the finish line
+//
+
+message FinsihLineDetectionOutput {
+    uint64 timestamp = 1; // Time of event
+}

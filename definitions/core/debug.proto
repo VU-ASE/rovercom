@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package protobuf_msgs;
+
+option go_package = "ase/pb_core_messages";
+
+import "core/servicediscovery.proto";
+
+//
+// When the debug transceiver picks up a SensorOutput message, it will wrap it in a DebugSensorOutput message,
+// so that the receiver can determine from which process the message originated
+//
+message DebugServiceMessage {
+    ServiceIdentifier service = 1; // The service that sent the message
+    ServiceEndpoint endpoint = 2; // The endpoint that sent the message
+    int64 sentAt = 4;
+    bytes message = 3;
+}

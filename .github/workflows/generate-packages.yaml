@@ -1,0 +1,56 @@
+name: generate-packages
+
+# TODO add container to forego install steps
+# will autogenerate packages when a new commit is pushed to main (thus also when a PR is merged)
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  generate-packages:
+    runs-on: ubuntu-20.04
+    container:
+      image: aselabsvu/dev-root
+      volumes:
+        - ${{ github.workspace }}:/app
+      env:
+        PATH: /root/.cargo/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/go/bin:/usr/go/bin
+        GOFLAGS: -buildvcs=false
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+
+    steps:
+      - uses: actions/checkout@v4
+      # - name: Install Go
+      #   uses: actions/setup-go@v4
+      #   with:
+      #     go-version: "1.21"
+      #     cache: false
+      # - name: Install Node
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: "18.x"
+      # - name: Install Protobuf compiler
+      #   run: sudo apt update && sudo apt install pkg-config protobuf-compiler
+      # - name: "Clean up previous build"
+      #   run: make clean
+
+
+      - run: make build
+
+
+      - name: Commit generated code
+        uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
+        with:
+          # Add all changes to packages
+          add: "packages/*"
+          author_name: Packagebuilder Bot
+          default_author: github_actions
+
+          # The message for the commit.
+          # Default: 'Commit from GitHub Actions (name of the workflow)'
+          message: "build: update packages (automated)"

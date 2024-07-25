@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package protobuf_msgs;
+
+option go_package = "ase/pb_module_outputs";
+
+//
+// Messages that can be output by the pwm-reader that 
+// is connected to the RPM sensors of the motors.
+//
+
+message RpmSensorOutput {
+    float leftRpm = 1;
+    float leftAngle = 2;
+    float rightRpm = 3;
+    float rightAngle = 4;
+}

@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package protobuf_msgs;
+
+option go_package = "ase/pb_simulator_messages";
+
+// Simulator sensor outputs.
+message SimulatorImageOutput {
+    uint32 width = 2;
+    uint32 height = 3;
+    bytes  pixels = 4;
+}
+
+// Possible Sim Requests. Useful for interfaces with Gym
+enum SimStatus {
+  SIM_PAUSED    = 0; /* Simulator is paused */
+  SIM_REQ_STEP  = 1; /* Request single step */
+  SIM_REQ_RESET = 2; /* Request hard reset */
+}
+
+// Generic state of Simulator
+message SimulatorState {
+    float speed = 1;                    /* Meters per second */
+    repeated bool wheel_off_track = 2;  /* [0] = FL, [1] = FR, [2] = RL, [3] = RR */
+    SimulatorImageOutput image = 3;     /* Image frame */
+    repeated float pos = 4;             /* [0] = x, [1] = y, [2] = z */
+    bool isDrifting = 5;                /* =false when not drifting */
+}

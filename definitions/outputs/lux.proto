@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package protobuf_msgs;
+
+option go_package = "ase/pb_module_outputs";
+
+//
+// Messages that can be outputed by the Lux sensor
+//
+
+message LuxSensorOutput { 
+    int32 lux = 1;
+}

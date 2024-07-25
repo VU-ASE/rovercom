@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package protobuf_msgs;
+
+option go_package = "ase/pb_segmentation";
+
+// control messages exchanged by client(s), the server and the car
+message Segment {
+    int64 PacketId = 1; // unique and increasing id of each the packet that this segment is part of
+    int64 SegmentId = 2; // unique and increasing id of the segment within the packet
+    int64 TotalSegments = 3; // total number of segments in the packet
+    bytes Data = 4; // data of the segment
+}

@@ -1,0 +1,101 @@
+syntax = "proto3";
+
+package protobuf_msgs;
+
+option go_package = "ase/pb_core_messages";
+
+//
+// This file defines the messages used by the ase system to communicate
+// service endpoints, statusses, endpoints, tuning parameters, etc.
+//
+
+// Used to identify a service within the system
+message ServiceIdentifier {
+    string name = 1;
+    int32 pid = 2;
+}
+
+// An endpoint that is made available by a service
+message ServiceEndpoint {
+    string name = 1; // the identifier to select this endpoint
+    string address = 2; // the zmq address to connect to
+}
+
+enum ServiceStatus {
+    UNKNOWN = 0; 
+    REGISTERED = 1; // Registered, but not running yet (probably waiting for dependencies)
+    RUNNING = 2; // Currently running (after registration)
+    STOPPED = 3; // Stopped gracefully
+    NOT_REGISTERED = 4; // Not registered yet (useful if you are waiting for this dependency)
+}
+
+// The options that can be set for a service
+message ServiceOption {
+    enum Type {
+        STRING = 0;
+        INT = 1;
+        FLOAT = 2;
+    }
+
+    string name = 1;
+    Type type = 2;
+    bool mutable = 3;
+    // should be set and checked based on the type
+    string string_default = 4;
+    int32 int_default = 5;
+    float float_default = 6;
+}
+
+// The core knows the dependencies of each service, to build a dependency graph
+message ServiceDependency {
+    string serviceName = 1;
+    string outputName = 2;
+}
+
+//
+// Service discovery messages send back and forth between the core and services
+//
+
+// A description of a service, sent by a service to register itself or broadcasted by the core
+message Service {
+    ServiceIdentifier identifier = 1;
+    repeated ServiceEndpoint endpoints = 2;
+    repeated ServiceOption options = 3;
+    repeated ServiceDependency dependencies = 4;
+    ServiceStatus status = 5;
+    int64 registeredAt = 6;
+}
+
+// When a service requests information about other services, it sends an InformationRequest message
+message ServiceInformationRequest {
+    ServiceIdentifier requested = 1;
+}
+
+// The core can order services to stop/restart by sending a service order
+message ServiceOrder {
+    enum OrderType {
+        STOP = 0; // will attempt a graceful shutdown
+        KILL = 1; // will kill the service immediately
+        FORCE_RESTART = 2; // will kill the service immediately and restart
+    }
+
+    // The service this order is for
+    ServiceIdentifier service = 1;
+    OrderType order = 2;
+}
+
+// When a service wants to fetch all services, it sends a ServiceListRequest
+message ServiceListRequest {
+    ServiceIdentifier requested = 1;
+}
+
+// When the core sends a list of services, it sends a ServiceList
+message ServiceList {
+    repeated Service services = 1;
+}
+
+// This will inform the core of a status update
+message ServiceStatusUpdate {
+    ServiceIdentifier service = 1;
+    ServiceStatus status = 2;
+}
