@@ -266,7 +266,7 @@ static const ProtobufCIntRange protobuf_msgs__core_message__number_ranges[2 + 1]
 const ProtobufCMessageDescriptor protobuf_msgs__core_message__descriptor =
 {
   PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "protobuf_msgs.coreMessage",
+  "protobuf_msgs.CoreMessage",
   "CoreMessage",
   "ProtobufMsgs__CoreMessage",
   "protobuf_msgs",

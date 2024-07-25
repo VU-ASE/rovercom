@@ -257,7 +257,7 @@ var file_core_wrapper_proto_rawDesc = []byte{
 	0x74, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x21, 0x0a, 0x05, 0x45, 0x72, 0x72, 0x6f,
 	0x72, 0x12, 0x18, 0x0a, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x18, 0x01, 0x20, 0x01,
 	0x28, 0x09, 0x52, 0x07, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x22, 0xa5, 0x05, 0x0a, 0x0b,
-	0x63, 0x6f, 0x72, 0x65, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x12, 0x32, 0x0a, 0x07, 0x73,
+	0x43, 0x6f, 0x72, 0x65, 0x4d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x12, 0x32, 0x0a, 0x07, 0x73,
 	0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x70,
 	0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x5f, 0x6d, 0x73, 0x67, 0x73, 0x2e, 0x53, 0x65, 0x72,
 	0x76, 0x69, 0x63, 0x65, 0x48, 0x00, 0x52, 0x07, 0x73, 0x65, 0x72, 0x76, 0x69, 0x63, 0x65, 0x12,
@@ -319,7 +319,7 @@ func file_core_wrapper_proto_rawDescGZIP() []byte {
 var file_core_wrapper_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_core_wrapper_proto_goTypes = []any{
 	(*Error)(nil),                     // 0: protobuf_msgs.Error
-	(*CoreMessage)(nil),               // 1: protobuf_msgs.coreMessage
+	(*CoreMessage)(nil),               // 1: protobuf_msgs.CoreMessage
 	(*Service)(nil),                   // 2: protobuf_msgs.Service
 	(*ServiceOrder)(nil),              // 3: protobuf_msgs.ServiceOrder
 	(*TuningState)(nil),               // 4: protobuf_msgs.TuningState
@@ -330,15 +330,15 @@ var file_core_wrapper_proto_goTypes = []any{
 	(*ServiceInformationRequest)(nil), // 9: protobuf_msgs.ServiceInformationRequest
 }
 var file_core_wrapper_proto_depIdxs = []int32{
-	2, // 0: protobuf_msgs.coreMessage.service:type_name -> protobuf_msgs.Service
-	3, // 1: protobuf_msgs.coreMessage.serviceOrder:type_name -> protobuf_msgs.ServiceOrder
-	4, // 2: protobuf_msgs.coreMessage.tuningState:type_name -> protobuf_msgs.TuningState
-	5, // 3: protobuf_msgs.coreMessage.tuningStateRequest:type_name -> protobuf_msgs.TuningStateRequest
-	6, // 4: protobuf_msgs.coreMessage.serviceListRequest:type_name -> protobuf_msgs.ServiceListRequest
-	7, // 5: protobuf_msgs.coreMessage.serviceList:type_name -> protobuf_msgs.ServiceList
-	8, // 6: protobuf_msgs.coreMessage.serviceStatusUpdate:type_name -> protobuf_msgs.ServiceStatusUpdate
-	9, // 7: protobuf_msgs.coreMessage.serviceInformationRequest:type_name -> protobuf_msgs.ServiceInformationRequest
-	0, // 8: protobuf_msgs.coreMessage.error:type_name -> protobuf_msgs.Error
+	2, // 0: protobuf_msgs.CoreMessage.service:type_name -> protobuf_msgs.Service
+	3, // 1: protobuf_msgs.CoreMessage.serviceOrder:type_name -> protobuf_msgs.ServiceOrder
+	4, // 2: protobuf_msgs.CoreMessage.tuningState:type_name -> protobuf_msgs.TuningState
+	5, // 3: protobuf_msgs.CoreMessage.tuningStateRequest:type_name -> protobuf_msgs.TuningStateRequest
+	6, // 4: protobuf_msgs.CoreMessage.serviceListRequest:type_name -> protobuf_msgs.ServiceListRequest
+	7, // 5: protobuf_msgs.CoreMessage.serviceList:type_name -> protobuf_msgs.ServiceList
+	8, // 6: protobuf_msgs.CoreMessage.serviceStatusUpdate:type_name -> protobuf_msgs.ServiceStatusUpdate
+	9, // 7: protobuf_msgs.CoreMessage.serviceInformationRequest:type_name -> protobuf_msgs.ServiceInformationRequest
+	0, // 8: protobuf_msgs.CoreMessage.error:type_name -> protobuf_msgs.Error
 	9, // [9:9] is the sub-list for method output_type
 	9, // [9:9] is the sub-list for method input_type
 	9, // [9:9] is the sub-list for extension type_name

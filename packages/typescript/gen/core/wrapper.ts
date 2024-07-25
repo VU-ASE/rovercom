@@ -22,7 +22,7 @@ export interface Error {
   message: string;
 }
 
-export interface coreMessage {
+export interface CoreMessage {
   service?: Service | undefined;
   serviceOrder?: ServiceOrder | undefined;
   tuningState?: TuningState | undefined;
@@ -91,7 +91,7 @@ export const Error = {
   },
 };
 
-function createBasecoreMessage(): coreMessage {
+function createBaseCoreMessage(): CoreMessage {
   return {
     service: undefined,
     serviceOrder: undefined,
@@ -105,8 +105,8 @@ function createBasecoreMessage(): coreMessage {
   };
 }
 
-export const coreMessage = {
-  encode(message: coreMessage, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+export const CoreMessage = {
+  encode(message: CoreMessage, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.service !== undefined) {
       Service.encode(message.service, writer.uint32(10).fork()).ldelim();
     }
@@ -137,10 +137,10 @@ export const coreMessage = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): coreMessage {
+  decode(input: _m0.Reader | Uint8Array, length?: number): CoreMessage {
     const reader = input instanceof _m0.Reader ? input : _m0.Reader.create(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBasecoreMessage();
+    const message = createBaseCoreMessage();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -216,7 +216,7 @@ export const coreMessage = {
     return message;
   },
 
-  fromJSON(object: any): coreMessage {
+  fromJSON(object: any): CoreMessage {
     return {
       service: isSet(object.service) ? Service.fromJSON(object.service) : undefined,
       serviceOrder: isSet(object.serviceOrder) ? ServiceOrder.fromJSON(object.serviceOrder) : undefined,
@@ -238,7 +238,7 @@ export const coreMessage = {
     };
   },
 
-  toJSON(message: coreMessage): unknown {
+  toJSON(message: CoreMessage): unknown {
     const obj: any = {};
     if (message.service !== undefined) {
       obj.service = Service.toJSON(message.service);
@@ -270,11 +270,11 @@ export const coreMessage = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<coreMessage>, I>>(base?: I): coreMessage {
-    return coreMessage.fromPartial(base ?? ({} as any));
+  create<I extends Exact<DeepPartial<CoreMessage>, I>>(base?: I): CoreMessage {
+    return CoreMessage.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<coreMessage>, I>>(object: I): coreMessage {
-    const message = createBasecoreMessage();
+  fromPartial<I extends Exact<DeepPartial<CoreMessage>, I>>(object: I): CoreMessage {
+    const message = createBaseCoreMessage();
     message.service = (object.service !== undefined && object.service !== null)
       ? Service.fromPartial(object.service)
       : undefined;
