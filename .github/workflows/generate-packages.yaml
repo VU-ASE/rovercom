@@ -10,7 +10,7 @@ on:
 
 jobs:
   generate-packages:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     container:
       image: aselabsvu/dev-root
       volumes:
@@ -25,6 +25,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - run: git config --system --add safe.directory *
       - run: make clean
       - run: make build
       - name: Commit generated code
