@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/VU-ASE/rovercom/compare/v1.0.1...v1.0.2) (2024-07-25)
+
+
+### Bug Fixes
+
+* consistent case ([654ee12](https://github.com/VU-ASE/rovercom/commit/654ee12ca4580e53b1d5da17375b541a77528942))
+
 ## [1.0.1](https://github.com/VU-ASE/rovercom/compare/v1.0.0...v1.0.1) (2024-07-25)
 
 
