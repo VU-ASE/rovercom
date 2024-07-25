@@ -15,7 +15,7 @@ message Error {
     string message = 1;
 }
 
-message coreMessage {
+message CoreMessage {
     oneof msg {
         Service service = 1;
         ServiceOrder serviceOrder = 4;
