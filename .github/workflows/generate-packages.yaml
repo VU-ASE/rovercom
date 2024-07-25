@@ -12,7 +12,7 @@ jobs:
   generate-packages:
     runs-on: ubuntu-20.04
     container:
-      image: aselabsvu/dev-root
+      image: aselabsvu/dev
       volumes:
         - ${{ github.workspace }}:/app
       env:
