@@ -29,6 +29,19 @@ package-c-build: package-c-install-deps package-c-clean
 	@mkdir -p ./packages/c/gen
 	@protoc --c_out=./packages/c/gen -I./definitions definitions/**/*.proto -I./definitions definitions/*.proto
 
-clean: package-go-clean package-ts-clean package-c-clean
+package-python-install-deps:
+	@echo todo
 
-build: package-go-build package-ts-build package-c-build
+package-python-clean:
+	rm -rf ./packages/python/gen
+
+package-python-build: package-c-install-deps package-c-clean
+	@mkdir -p ./packages/python/gen
+	@protoc --python_out=./packages/python/gen -I./definitions definitions/**/*.proto -I./definitions definitions/*.proto
+
+
+
+
+clean: package-go-clean package-ts-clean package-c-clean package-python-clean
+
+build: package-go-build package-ts-build package-c-build package-python-build
