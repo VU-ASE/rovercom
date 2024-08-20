@@ -29,15 +29,14 @@ package-c-build: package-c-install-deps package-c-clean
 	@mkdir -p ./packages/c/gen
 	@protoc --c_out=./packages/c/gen -I./definitions definitions/**/*.proto -I./definitions definitions/*.proto
 
-package-python-install-deps:
-	@echo todo
+
 
 package-python-clean:
 	rm -rf ./packages/python/gen
 
-package-python-build: package-c-install-deps package-c-clean
+package-python-build: package-c-clean
 	@mkdir -p ./packages/python/gen
-	@protoc --python_out=./packages/python/gen -I./definitions definitions/**/*.proto -I./definitions definitions/*.proto
+	@protoc --python_betterproto_out=./packages/python/gen -I./definitions definitions/**/*.proto -I./definitions definitions/*.proto
 
 
 
