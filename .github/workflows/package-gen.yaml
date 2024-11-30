@@ -18,7 +18,7 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - uses: actions/checkout@v4
-      - name: Run tests in devcontainer
+      - name: Run protobuf compilation in devcontainer
         uses: devcontainers/ci@v0.3
         with:    
           push: never
