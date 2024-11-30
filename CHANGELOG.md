@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.2.0](https://github.com/VU-ASE/rovercom/compare/v1.1.0...v1.2.0) (2024-11-30)
+
+
+### Features
+
+* automated package building with minimal devcontainer ([59ac380](https://github.com/VU-ASE/rovercom/commit/59ac380de51e38b7212ec39a27f81097c303e7dc))
+* devcontainer and simpler definition structure ([7d53502](https://github.com/VU-ASE/rovercom/commit/7d53502a402bf8ec96c0ad63675d0a3ff4f3252d))
+
+
+### Bug Fixes
+
+* package builder permissions ([7780e12](https://github.com/VU-ASE/rovercom/commit/7780e1279933da9af7e7c81b657b23cd76639318))
+
 ## [1.1.0](https://github.com/VU-ASE/rovercom/compare/v1.0.2...v1.1.0) (2024-08-19)
 
 
