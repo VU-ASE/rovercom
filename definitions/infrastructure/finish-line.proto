@@ -9,6 +9,6 @@ option go_package = "ase/pb_infrastructure";
 // objects passing the finish line
 //
 
-message FinsihLineDetectionOutput {
+message FinishLineEvent {
     uint64 timestamp = 1; // Time of event
 }

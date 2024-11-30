@@ -25,3 +25,5 @@ node_modules
 
 # All generated/compiled code that was created from proto files
 gen/*
+
+.DS_Store

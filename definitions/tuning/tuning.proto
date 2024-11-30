@@ -2,19 +2,15 @@ syntax = "proto3";
 
 package protobuf_msgs;
 
-option go_package = "ase/pb_core_messages";
-
+option go_package = "ase/pb_tuning";
 
 //
-// This defines runtime tuning that can be applied to the system.
-// Tuning states are distributed through the system in these ways:
-// - The web ui can send a tuning state to the core (this should be the new state)
-// - The core can send a tuning state to the web ui (this should be the current state, to be displayed)
-// - The core can send a tuning state to a process in the system (this should be the current state, to be applied)
+// This defines runtime tuning that can be applied to the pipeline.
+// (set through the web-monitor, distributed using the transceiver service)
 //
 
 message TuningState {
-    uint64 timestamp = 1; // increased when the state changes, used to prevent unnecessary updates
+    uint64 timestamp = 1; // increased when the state changes, used to prevent unnecessary updates (so *not* in milliseconds since epoch)
 
     message Parameter {
         // note: it may seem weird to not extract the key from the oneof, but this is so that the parser can easily determine the type of the parameter
@@ -41,8 +37,3 @@ message TuningState {
 
     repeated Parameter dynamicParameters = 2;
 }
-
-message TuningStateRequest {
-    uint64 timestamp = 1; // the timestamp of the last received state, used to prevent unnecessary updates
-}
-

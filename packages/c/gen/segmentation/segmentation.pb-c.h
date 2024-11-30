@@ -24,7 +24,9 @@ typedef struct _ProtobufMsgs__Segment ProtobufMsgs__Segment;
 /* --- messages --- */
 
 /*
- * control messages exchanged by client(s), the server and the car
+ * 
+ * Control messages exchanged by client(s), the server and the car to send data in multiple segments
+ * 
  */
 struct  _ProtobufMsgs__Segment
 {

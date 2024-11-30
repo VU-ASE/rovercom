@@ -1,4 +1,7 @@
 .PHONY: build start
+
+INPUTS = -I./definitions definitions/**/*.proto
+
 package-go-install-deps:
 	@go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 
@@ -7,9 +10,10 @@ package-go-clean:
 
 package-go-build: package-go-install-deps package-go-clean
 	@mkdir -p ./packages/go
-	@protoc --go_out=paths=source_relative:./packages/go -I./definitions definitions/**/*.proto -I./definitions definitions/*.proto
+	@protoc --go_out=paths=source_relative:./packages/go $(INPUTS)
 
 package-ts-install-deps:
+	@mkdir -p ./packages/typescript/gen
 	@cd ./packages/typescript && npm install ts-proto
 
 package-ts-clean:
@@ -17,29 +21,24 @@ package-ts-clean:
 
 package-ts-build: package-ts-install-deps package-ts-clean
 	@mkdir -p ./packages/typescript/gen
-	@protoc --plugin=./packages/typescript/node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=paths=source_relative:./packages/typescript/gen --ts_proto_opt=esModuleInterop=true -I./definitions definitions/**/*.proto -I./definitions definitions/*.proto
+	@protoc --plugin=./packages/typescript/node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=paths=source_relative:./packages/typescript/gen --ts_proto_opt=esModuleInterop=true $(INPUTS)
 
 package-c-install-deps:
-	@sudo apt install -y protobuf-c-compiler
+	@apt install -y protobuf-c-compiler
 
 package-c-clean:
 	rm -rf ./packages/c/gen
 
 package-c-build: package-c-install-deps package-c-clean
 	@mkdir -p ./packages/c/gen
-	@protoc --c_out=./packages/c/gen -I./definitions definitions/**/*.proto -I./definitions definitions/*.proto
-
-
+	@protoc --c_out=./packages/c/gen $(INPUTS)
 
 package-python-clean:
 	rm -rf ./packages/python/gen
 
 package-python-build: package-c-clean
 	@mkdir -p ./packages/python/gen
-	@protoc --python_betterproto_out=./packages/python/gen -I./definitions definitions/**/*.proto -I./definitions definitions/*.proto
-
-
-
+	@protoc --python_betterproto_out=./packages/python/gen $(INPUTS)
 
 clean: package-go-clean package-ts-clean package-c-clean package-python-clean
 

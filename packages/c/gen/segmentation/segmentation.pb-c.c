@@ -55,7 +55,7 @@ void   protobuf_msgs__segment__free_unpacked
 static const ProtobufCFieldDescriptor protobuf_msgs__segment__field_descriptors[4] =
 {
   {
-    "PacketId",
+    "packetId",
     1,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_INT64,
@@ -67,7 +67,7 @@ static const ProtobufCFieldDescriptor protobuf_msgs__segment__field_descriptors[
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "SegmentId",
+    "segmentId",
     2,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_INT64,
@@ -79,7 +79,7 @@ static const ProtobufCFieldDescriptor protobuf_msgs__segment__field_descriptors[
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "TotalSegments",
+    "totalSegments",
     3,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_INT64,
@@ -91,7 +91,7 @@ static const ProtobufCFieldDescriptor protobuf_msgs__segment__field_descriptors[
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "Data",
+    "data",
     4,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_BYTES,
@@ -104,10 +104,10 @@ static const ProtobufCFieldDescriptor protobuf_msgs__segment__field_descriptors[
   },
 };
 static const unsigned protobuf_msgs__segment__field_indices_by_name[] = {
-  3,   /* field[3] = Data */
-  0,   /* field[0] = PacketId */
-  1,   /* field[1] = SegmentId */
-  2,   /* field[2] = TotalSegments */
+  3,   /* field[3] = data */
+  0,   /* field[0] = packetId */
+  1,   /* field[1] = segmentId */
+  2,   /* field[2] = totalSegments */
 };
 static const ProtobufCIntRange protobuf_msgs__segment__number_ranges[1 + 1] =
 {

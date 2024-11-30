@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package protobuf_msgs;
+
+option go_package = "ase/pb_debug";
+
+// Used to identify a service within the pipeline
+message ServiceIdentifier {
+    string name = 1;
+    int32 pid = 2;
+}
+
+// An endpoint that is made available by a service
+message ServiceEndpoint {
+    string name = 1; // the identifier to select this endpoint
+    string address = 2; // the zmq address to connect to
+}
+
+//
+// When the transceivers picks up a SensorOutput from a service, it will wrap it in a ServiceMessage message,
+// so that the receiver can determine from which process the message originated
+//
+message DebugOutput {
+    ServiceIdentifier service = 1; // The service that sent the message
+    ServiceEndpoint endpoint = 2; // The endpoint in this service that sent the message
+    int64 sentAt = 4; // Time in milliseconds since epoch when the message was sent
+    bytes message = 3;
+}

@@ -1,0 +1,32 @@
+name: generate packages
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+  # Optional: allow read access to pull request. Use with `only-new-issues` option.
+  pull-requests: read
+
+jobs:
+  generate-packages:
+    name: build inside devcontainer
+    defaults:
+      run:
+        shell: bash
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run tests in devcontainer
+        uses: devcontainers/ci@v0.3
+        with:    
+          imageName: ghcr.io/VU-ASE/rovercom
+          cacheFrom: ghcr.io/VU-ASE/rovercom
+          push: always
+          runCmd: make build
+      - name: ls packages
+        run: ls packages
+
+
