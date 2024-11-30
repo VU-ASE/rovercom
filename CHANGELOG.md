@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/VU-ASE/rovercom/compare/v1.2.0...v1.2.1) (2024-11-30)
+
+
+### Bug Fixes
+
+* re-release rovercom to avoid invalid cache issues ([bea9789](https://github.com/VU-ASE/rovercom/commit/bea9789dabd7052c6c5fb66291f715f30d7fdd1a))
+
 ## [1.2.0](https://github.com/VU-ASE/rovercom/compare/v1.1.0...v1.2.0) (2024-11-30)
 
 
