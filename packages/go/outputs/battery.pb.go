@@ -4,7 +4,7 @@
 // 	protoc        v3.12.4
 // source: outputs/battery.proto
 
-package pb_module_outputs
+package pb_outputs
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"

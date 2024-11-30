@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package protobuf_msgs;
 
-option go_package = "ase/pb_module_outputs";
+option go_package = "ase/pb_outputs";
 
 //
 // Messages that can be outputed by a speed sensor module

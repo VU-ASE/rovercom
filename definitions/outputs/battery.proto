@@ -2,10 +2,10 @@ syntax = "proto3";
 
 package protobuf_msgs;
 
-option go_package = "ase/pb_module_outputs";
+option go_package = "ase/pb_outputs";
 
 //
-// Messages that can be outputed by a battery sensor module
+// Messages that can be outputted by a battery sensor module
 //
 
 message BatterySensorOutput {
