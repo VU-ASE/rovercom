@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/VU-ASE/rovercom/compare/v1.2.1...v1.3.0) (2024-11-30)
+
+
+### Features
+
+* release service outputs under 'pb_outputs' ([bbc9386](https://github.com/VU-ASE/rovercom/commit/bbc9386d5ea5af2fb3009e6b7b5697e2274a8a76))
+
 ## [1.2.1](https://github.com/VU-ASE/rovercom/compare/v1.2.0...v1.2.1) (2024-11-30)
 
 
