@@ -5,11 +5,6 @@ on:
     branches:
       - main
 
-permissions:
-  contents: read
-  # Optional: allow read access to pull request. Use with `only-new-issues` option.
-  pull-requests: read
-
 jobs:
   generate-packages:
     name: build inside devcontainer
@@ -24,8 +19,6 @@ jobs:
         with:    
           push: never
           runCmd: make clean; make build
-      - name: ls packages
-        run: ls packages
       - name: Commit generated code
         uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
         with:
