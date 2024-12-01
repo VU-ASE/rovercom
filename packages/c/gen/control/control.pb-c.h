@@ -16,6 +16,7 @@ PROTOBUF_C__BEGIN_DECLS
 
 
 typedef struct _ProtobufMsgs__ConnectionState ProtobufMsgs__ConnectionState;
+typedef struct _ProtobufMsgs__ControlError ProtobufMsgs__ControlError;
 
 
 /* --- enums --- */
@@ -41,6 +42,17 @@ struct  _ProtobufMsgs__ConnectionState
     , (char *)protobuf_c_empty_string, 0, 0 }
 
 
+struct  _ProtobufMsgs__ControlError
+{
+  ProtobufCMessage base;
+  char *message;
+  int64_t timestamp;
+};
+#define PROTOBUF_MSGS__CONTROL_ERROR__INIT \
+ { PROTOBUF_C_MESSAGE_INIT (&protobuf_msgs__control_error__descriptor) \
+    , (char *)protobuf_c_empty_string, 0 }
+
+
 /* ProtobufMsgs__ConnectionState methods */
 void   protobuf_msgs__connection_state__init
                      (ProtobufMsgs__ConnectionState         *message);
@@ -60,10 +72,32 @@ ProtobufMsgs__ConnectionState *
 void   protobuf_msgs__connection_state__free_unpacked
                      (ProtobufMsgs__ConnectionState *message,
                       ProtobufCAllocator *allocator);
+/* ProtobufMsgs__ControlError methods */
+void   protobuf_msgs__control_error__init
+                     (ProtobufMsgs__ControlError         *message);
+size_t protobuf_msgs__control_error__get_packed_size
+                     (const ProtobufMsgs__ControlError   *message);
+size_t protobuf_msgs__control_error__pack
+                     (const ProtobufMsgs__ControlError   *message,
+                      uint8_t             *out);
+size_t protobuf_msgs__control_error__pack_to_buffer
+                     (const ProtobufMsgs__ControlError   *message,
+                      ProtobufCBuffer     *buffer);
+ProtobufMsgs__ControlError *
+       protobuf_msgs__control_error__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data);
+void   protobuf_msgs__control_error__free_unpacked
+                     (ProtobufMsgs__ControlError *message,
+                      ProtobufCAllocator *allocator);
 /* --- per-message closures --- */
 
 typedef void (*ProtobufMsgs__ConnectionState_Closure)
                  (const ProtobufMsgs__ConnectionState *message,
+                  void *closure_data);
+typedef void (*ProtobufMsgs__ControlError_Closure)
+                 (const ProtobufMsgs__ControlError *message,
                   void *closure_data);
 
 /* --- services --- */
@@ -72,6 +106,7 @@ typedef void (*ProtobufMsgs__ConnectionState_Closure)
 /* --- descriptors --- */
 
 extern const ProtobufCMessageDescriptor protobuf_msgs__connection_state__descriptor;
+extern const ProtobufCMessageDescriptor protobuf_msgs__control_error__descriptor;
 
 PROTOBUF_C__END_DECLS
 

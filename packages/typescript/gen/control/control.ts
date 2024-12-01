@@ -17,6 +17,11 @@ export interface ConnectionState {
   timestampOffset: number;
 }
 
+export interface ControlError {
+  message: string;
+  timestamp: number;
+}
+
 function createBaseConnectionState(): ConnectionState {
   return { client: "", connected: false, timestampOffset: 0 };
 }
@@ -105,6 +110,82 @@ export const ConnectionState: MessageFns<ConnectionState> = {
     message.client = object.client ?? "";
     message.connected = object.connected ?? false;
     message.timestampOffset = object.timestampOffset ?? 0;
+    return message;
+  },
+};
+
+function createBaseControlError(): ControlError {
+  return { message: "", timestamp: 0 };
+}
+
+export const ControlError: MessageFns<ControlError> = {
+  encode(message: ControlError, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.message !== "") {
+      writer.uint32(10).string(message.message);
+    }
+    if (message.timestamp !== 0) {
+      writer.uint32(16).int64(message.timestamp);
+    }
+    return writer;
+  },
+
+  decode(input: BinaryReader | Uint8Array, length?: number): ControlError {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseControlError();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1: {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.message = reader.string();
+          continue;
+        }
+        case 2: {
+          if (tag !== 16) {
+            break;
+          }
+
+          message.timestamp = longToNumber(reader.int64());
+          continue;
+        }
+      }
+      if ((tag & 7) === 4 || tag === 0) {
+        break;
+      }
+      reader.skip(tag & 7);
+    }
+    return message;
+  },
+
+  fromJSON(object: any): ControlError {
+    return {
+      message: isSet(object.message) ? globalThis.String(object.message) : "",
+      timestamp: isSet(object.timestamp) ? globalThis.Number(object.timestamp) : 0,
+    };
+  },
+
+  toJSON(message: ControlError): unknown {
+    const obj: any = {};
+    if (message.message !== "") {
+      obj.message = message.message;
+    }
+    if (message.timestamp !== 0) {
+      obj.timestamp = Math.round(message.timestamp);
+    }
+    return obj;
+  },
+
+  create<I extends Exact<DeepPartial<ControlError>, I>>(base?: I): ControlError {
+    return ControlError.fromPartial(base ?? ({} as any));
+  },
+  fromPartial<I extends Exact<DeepPartial<ControlError>, I>>(object: I): ControlError {
+    const message = createBaseControlError();
+    message.message = object.message ?? "";
+    message.timestamp = object.timestamp ?? 0;
     return message;
   },
 };

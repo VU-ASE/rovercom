@@ -52,6 +52,51 @@ void   protobuf_msgs__connection_state__free_unpacked
   assert(message->base.descriptor == &protobuf_msgs__connection_state__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
+void   protobuf_msgs__control_error__init
+                     (ProtobufMsgs__ControlError         *message)
+{
+  static const ProtobufMsgs__ControlError init_value = PROTOBUF_MSGS__CONTROL_ERROR__INIT;
+  *message = init_value;
+}
+size_t protobuf_msgs__control_error__get_packed_size
+                     (const ProtobufMsgs__ControlError *message)
+{
+  assert(message->base.descriptor == &protobuf_msgs__control_error__descriptor);
+  return protobuf_c_message_get_packed_size ((const ProtobufCMessage*)(message));
+}
+size_t protobuf_msgs__control_error__pack
+                     (const ProtobufMsgs__ControlError *message,
+                      uint8_t       *out)
+{
+  assert(message->base.descriptor == &protobuf_msgs__control_error__descriptor);
+  return protobuf_c_message_pack ((const ProtobufCMessage*)message, out);
+}
+size_t protobuf_msgs__control_error__pack_to_buffer
+                     (const ProtobufMsgs__ControlError *message,
+                      ProtobufCBuffer *buffer)
+{
+  assert(message->base.descriptor == &protobuf_msgs__control_error__descriptor);
+  return protobuf_c_message_pack_to_buffer ((const ProtobufCMessage*)message, buffer);
+}
+ProtobufMsgs__ControlError *
+       protobuf_msgs__control_error__unpack
+                     (ProtobufCAllocator  *allocator,
+                      size_t               len,
+                      const uint8_t       *data)
+{
+  return (ProtobufMsgs__ControlError *)
+     protobuf_c_message_unpack (&protobuf_msgs__control_error__descriptor,
+                                allocator, len, data);
+}
+void   protobuf_msgs__control_error__free_unpacked
+                     (ProtobufMsgs__ControlError *message,
+                      ProtobufCAllocator *allocator)
+{
+  if(!message)
+    return;
+  assert(message->base.descriptor == &protobuf_msgs__control_error__descriptor);
+  protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
+}
 static const ProtobufCFieldDescriptor protobuf_msgs__connection_state__field_descriptors[3] =
 {
   {
@@ -114,5 +159,56 @@ const ProtobufCMessageDescriptor protobuf_msgs__connection_state__descriptor =
   protobuf_msgs__connection_state__field_indices_by_name,
   1,  protobuf_msgs__connection_state__number_ranges,
   (ProtobufCMessageInit) protobuf_msgs__connection_state__init,
+  NULL,NULL,NULL    /* reserved[123] */
+};
+static const ProtobufCFieldDescriptor protobuf_msgs__control_error__field_descriptors[2] =
+{
+  {
+    "message",
+    1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(ProtobufMsgs__ControlError, message),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "timestamp",
+    2,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_INT64,
+    0,   /* quantifier_offset */
+    offsetof(ProtobufMsgs__ControlError, timestamp),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+};
+static const unsigned protobuf_msgs__control_error__field_indices_by_name[] = {
+  0,   /* field[0] = message */
+  1,   /* field[1] = timestamp */
+};
+static const ProtobufCIntRange protobuf_msgs__control_error__number_ranges[1 + 1] =
+{
+  { 1, 0 },
+  { 0, 2 }
+};
+const ProtobufCMessageDescriptor protobuf_msgs__control_error__descriptor =
+{
+  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
+  "protobuf_msgs.ControlError",
+  "ControlError",
+  "ProtobufMsgs__ControlError",
+  "protobuf_msgs",
+  sizeof(ProtobufMsgs__ControlError),
+  2,
+  protobuf_msgs__control_error__field_descriptors,
+  protobuf_msgs__control_error__field_indices_by_name,
+  1,  protobuf_msgs__control_error__number_ranges,
+  (ProtobufCMessageInit) protobuf_msgs__control_error__init,
   NULL,NULL,NULL    /* reserved[123] */
 };

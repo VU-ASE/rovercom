@@ -40,6 +40,12 @@ class ConnectionState(betterproto.Message):
 
 
 @dataclass
+class ControlError(betterproto.Message):
+    message: str = betterproto.string_field(1)
+    timestamp: int = betterproto.int64_field(2)
+
+
+@dataclass
 class ServiceIdentifier(betterproto.Message):
     """Used to identify a service within the pipeline"""
 
