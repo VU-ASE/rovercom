@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/VU-ASE/rovercom/compare/v1.3.0...v1.3.1) (2024-12-01)
+
+
+### Bug Fixes
+
+* release new package to circumvent checksum mismatch ([f9698ad](https://github.com/VU-ASE/rovercom/commit/f9698adab01c4bd58107855a97e9e3b8d574f409))
+
 ## [1.3.0](https://github.com/VU-ASE/rovercom/compare/v1.2.1...v1.3.0) (2024-11-30)
 
 
