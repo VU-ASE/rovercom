@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+package protobuf_msgs;
+
+option go_package = "ase/pb_control";
+
+//
+// Messages in the control protocol that are used to tell passthrough and web-monitor when
+// a car connects or disconnects
+//
+
+// Tell a client if a given client/rover is connected or not
+message ConnectionState {
+    string client = 1;
+    bool connected = 2;
+    int64 timestampOffset = 3; // the offset between the system time of the client/rover and the server
+}
