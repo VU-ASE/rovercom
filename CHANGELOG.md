@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.4.0](https://github.com/VU-ASE/rovercom/compare/v1.3.1...v1.4.0) (2024-12-01)
+
+
+### Features
+
+* add control message definitions ([a10b7fc](https://github.com/VU-ASE/rovercom/commit/a10b7fc882e62ec003e0e0a4b2b1ae4fb4a2d4b8))
+* added control error messages ([3995d2a](https://github.com/VU-ASE/rovercom/commit/3995d2a10142c181760bc1b36963ea53065647ef))
+
 ## [1.3.1](https://github.com/VU-ASE/rovercom/compare/v1.3.0...v1.3.1) (2024-12-01)
 
 
