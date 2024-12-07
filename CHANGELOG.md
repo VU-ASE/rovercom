@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/VU-ASE/rovercom/compare/v1.4.1...v1.4.2) (2024-12-07)
+
+
+### Bug Fixes
+
+* rovercom typescript package.json definitions ([edd7fd1](https://github.com/VU-ASE/rovercom/commit/edd7fd16ba8a1ec2bf38fa0a94d30a19b79d5557))
+
 ## [1.4.1](https://github.com/VU-ASE/rovercom/compare/v1.4.0...v1.4.1) (2024-12-01)
 
 
