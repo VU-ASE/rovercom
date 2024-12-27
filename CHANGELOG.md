@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/VU-ASE/rovercom/compare/v1.4.2...v1.5.0) (2024-12-27)
+
+
+### Features
+
+* merge float/int parameter into "number" parameter ([cd2f085](https://github.com/VU-ASE/rovercom/commit/cd2f0851d7cb2ee7d48099a5a5c1bc7888b26975))
+
 ## [1.4.2](https://github.com/VU-ASE/rovercom/compare/v1.4.1...v1.4.2) (2024-12-07)
 
 
