@@ -318,11 +318,8 @@ class TuningState(betterproto.Message):
 
 @dataclass
 class TuningStateParameter(betterproto.Message):
-    float: "TuningStateParameterFloatParameter" = betterproto.message_field(
+    number: "TuningStateParameterNumberParameter" = betterproto.message_field(
         1, group="parameter"
-    )
-    int: "TuningStateParameterIntParameter" = betterproto.message_field(
-        2, group="parameter"
     )
     string: "TuningStateParameterStringParameter" = betterproto.message_field(
         3, group="parameter"
@@ -330,7 +327,7 @@ class TuningStateParameter(betterproto.Message):
 
 
 @dataclass
-class TuningStateParameterFloatParameter(betterproto.Message):
+class TuningStateParameterNumberParameter(betterproto.Message):
     """
     note: it may seem weird to not extract the key from the oneof, but this is
     so that the parser can easily determine the type of the parameter
@@ -340,12 +337,6 @@ class TuningStateParameterFloatParameter(betterproto.Message):
 
     key: str = betterproto.string_field(1)
     value: float = betterproto.float_field(2)
-
-
-@dataclass
-class TuningStateParameterIntParameter(betterproto.Message):
-    key: str = betterproto.string_field(1)
-    value: int = betterproto.int64_field(2)
 
 
 @dataclass

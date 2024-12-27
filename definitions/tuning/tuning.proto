@@ -15,13 +15,9 @@ message TuningState {
     message Parameter {
         // note: it may seem weird to not extract the key from the oneof, but this is so that the parser can easily determine the type of the parameter
         // extracting it to a separate field on the same level as oneof would make it ambiguous
-        message FloatParameter {
+        message NumberParameter {
             string key = 1;
             float value = 2;
-        }
-        message IntParameter {
-            string key = 1;
-            int64 value = 2;
         }
         message StringParameter {
             string key = 1;
@@ -29,8 +25,7 @@ message TuningState {
         }
 
         oneof parameter {
-            FloatParameter float = 1;
-            IntParameter int = 2;
+            NumberParameter number = 1;
             StringParameter string = 3;
         }
     }
