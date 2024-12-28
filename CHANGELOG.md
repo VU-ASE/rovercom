@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/VU-ASE/rovercom/compare/v1.5.0...v1.5.1) (2024-12-28)
+
+
+### Bug Fixes
+
+* release checksum-safe version ([0daefdb](https://github.com/VU-ASE/rovercom/commit/0daefdbad487b220f8e3c6e48110d3a3599b3c17))
+
 ## [1.5.0](https://github.com/VU-ASE/rovercom/compare/v1.4.2...v1.5.0) (2024-12-27)
 
 
