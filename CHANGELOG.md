@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.6.0](https://github.com/VU-ASE/rovercom/compare/v1.5.1...v1.6.0) (2025-01-04)
+
+
+### Features
+
+* added installation docs ([a4a603d](https://github.com/VU-ASE/rovercom/commit/a4a603d53b93fb4919f666238ce0f4e9e7f7af60))
+* overview docs page ([6654bab](https://github.com/VU-ASE/rovercom/commit/6654babb6882cce87c96497f06a290187b1e4be9))
+
 ## [1.5.1](https://github.com/VU-ASE/rovercom/compare/v1.5.0...v1.5.1) (2024-12-28)
 
 
