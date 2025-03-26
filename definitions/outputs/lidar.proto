@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package protobuf_msgs;
+
+option go_package = "ase/pb_outputs";
+
+//
+// Messages output by the LiDAR
+//
+
+message LidarSensorOutput {
+    // todo
+}
