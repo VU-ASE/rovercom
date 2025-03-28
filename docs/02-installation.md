@@ -28,6 +28,12 @@ go get google.golang.org/protobuf
 
 You can find the transpiled Python files in our repository [here](https://github.com/VU-ASE/rovercom/tree/main/packages/python/gen).
 
+Additionally, you will need to install the `betterproto` package:
+
+```bash
+pip install betterproto
+```
+
   </TabItem>
   <TabItem value="roverlib-c" label="C">
 
