@@ -52,6 +52,7 @@ type SensorOutput struct {
 	//	*SensorOutput_GenericBoolArray
 	//	*SensorOutput_GenericStringArray
 	//	*SensorOutput_LidarOutput
+	//	*SensorOutput_EnergyOutput
 	SensorOutput  isSensorOutput_SensorOutput `protobuf_oneof:"sensorOutput"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
@@ -277,6 +278,15 @@ func (x *SensorOutput) GetLidarOutput() *LidarSensorOutput {
 	return nil
 }
 
+func (x *SensorOutput) GetEnergyOutput() *EnergySensorOutput {
+	if x != nil {
+		if x, ok := x.SensorOutput.(*SensorOutput_EnergyOutput); ok {
+			return x.EnergyOutput
+		}
+	}
+	return nil
+}
+
 type isSensorOutput_SensorOutput interface {
 	isSensorOutput_SensorOutput()
 }
@@ -353,6 +363,10 @@ type SensorOutput_LidarOutput struct {
 	LidarOutput *LidarSensorOutput `protobuf:"bytes,21,opt,name=lidarOutput,proto3,oneof"`
 }
 
+type SensorOutput_EnergyOutput struct {
+	EnergyOutput *EnergySensorOutput `protobuf:"bytes,22,opt,name=energyOutput,proto3,oneof"`
+}
+
 func (*SensorOutput_CameraOutput) isSensorOutput_SensorOutput() {}
 
 func (*SensorOutput_DistanceOutput) isSensorOutput_SensorOutput() {}
@@ -389,11 +403,13 @@ func (*SensorOutput_GenericStringArray) isSensorOutput_SensorOutput() {}
 
 func (*SensorOutput_LidarOutput) isSensorOutput_SensorOutput() {}
 
+func (*SensorOutput_EnergyOutput) isSensorOutput_SensorOutput() {}
+
 var File_outputs_wrapper_proto protoreflect.FileDescriptor
 
 const file_outputs_wrapper_proto_rawDesc = "" +
 	"\n" +
-	"\x15outputs/wrapper.proto\x12\rprotobuf_msgs\x1a\x14outputs/camera.proto\x1a\x16outputs/distance.proto\x1a\x13outputs/speed.proto\x1a\x18outputs/controller.proto\x1a\x11outputs/imu.proto\x1a\x15outputs/battery.proto\x1a\x11outputs/rpm.proto\x1a\x11outputs/lux.proto\x1a\x15outputs/laptime.proto\x1a\x15outputs/generic.proto\x1a\x13outputs/lidar.proto\"\xc3\v\n" +
+	"\x15outputs/wrapper.proto\x12\rprotobuf_msgs\x1a\x14outputs/camera.proto\x1a\x16outputs/distance.proto\x1a\x13outputs/speed.proto\x1a\x18outputs/controller.proto\x1a\x11outputs/imu.proto\x1a\x15outputs/battery.proto\x1a\x11outputs/rpm.proto\x1a\x11outputs/lux.proto\x1a\x15outputs/laptime.proto\x1a\x15outputs/generic.proto\x1a\x13outputs/lidar.proto\x1a\x14outputs/energy.proto\"\x8c\f\n" +
 	"\fSensorOutput\x12\x1a\n" +
 	"\bsensorId\x18\x01 \x01(\rR\bsensorId\x12\x1c\n" +
 	"\ttimestamp\x18\x02 \x01(\x04R\ttimestamp\x12\x16\n" +
@@ -416,7 +432,8 @@ const file_outputs_wrapper_proto_rawDesc = "" +
 	"\x11genericFloatArray\x18\x12 \x01(\v2 .protobuf_msgs.GenericFloatArrayH\x00R\x11genericFloatArray\x12M\n" +
 	"\x10genericBoolArray\x18\x13 \x01(\v2\x1f.protobuf_msgs.GenericBoolArrayH\x00R\x10genericBoolArray\x12S\n" +
 	"\x12genericStringArray\x18\x14 \x01(\v2!.protobuf_msgs.GenericStringArrayH\x00R\x12genericStringArray\x12D\n" +
-	"\vlidarOutput\x18\x15 \x01(\v2 .protobuf_msgs.LidarSensorOutputH\x00R\vlidarOutputB\x0e\n" +
+	"\vlidarOutput\x18\x15 \x01(\v2 .protobuf_msgs.LidarSensorOutputH\x00R\vlidarOutput\x12G\n" +
+	"\fenergyOutput\x18\x16 \x01(\v2!.protobuf_msgs.EnergySensorOutputH\x00R\fenergyOutputB\x0e\n" +
 	"\fsensorOutputB\x10Z\x0ease/pb_outputsb\x06proto3"
 
 var (
@@ -452,6 +469,7 @@ var file_outputs_wrapper_proto_goTypes = []any{
 	(*GenericBoolArray)(nil),     // 16: protobuf_msgs.GenericBoolArray
 	(*GenericStringArray)(nil),   // 17: protobuf_msgs.GenericStringArray
 	(*LidarSensorOutput)(nil),    // 18: protobuf_msgs.LidarSensorOutput
+	(*EnergySensorOutput)(nil),   // 19: protobuf_msgs.EnergySensorOutput
 }
 var file_outputs_wrapper_proto_depIdxs = []int32{
 	1,  // 0: protobuf_msgs.SensorOutput.cameraOutput:type_name -> protobuf_msgs.CameraSensorOutput
@@ -472,11 +490,12 @@ var file_outputs_wrapper_proto_depIdxs = []int32{
 	16, // 15: protobuf_msgs.SensorOutput.genericBoolArray:type_name -> protobuf_msgs.GenericBoolArray
 	17, // 16: protobuf_msgs.SensorOutput.genericStringArray:type_name -> protobuf_msgs.GenericStringArray
 	18, // 17: protobuf_msgs.SensorOutput.lidarOutput:type_name -> protobuf_msgs.LidarSensorOutput
-	18, // [18:18] is the sub-list for method output_type
-	18, // [18:18] is the sub-list for method input_type
-	18, // [18:18] is the sub-list for extension type_name
-	18, // [18:18] is the sub-list for extension extendee
-	0,  // [0:18] is the sub-list for field type_name
+	19, // 18: protobuf_msgs.SensorOutput.energyOutput:type_name -> protobuf_msgs.EnergySensorOutput
+	19, // [19:19] is the sub-list for method output_type
+	19, // [19:19] is the sub-list for method input_type
+	19, // [19:19] is the sub-list for extension type_name
+	19, // [19:19] is the sub-list for extension extendee
+	0,  // [0:19] is the sub-list for field type_name
 }
 
 func init() { file_outputs_wrapper_proto_init() }
@@ -495,6 +514,7 @@ func file_outputs_wrapper_proto_init() {
 	file_outputs_laptime_proto_init()
 	file_outputs_generic_proto_init()
 	file_outputs_lidar_proto_init()
+	file_outputs_energy_proto_init()
 	file_outputs_wrapper_proto_msgTypes[0].OneofWrappers = []any{
 		(*SensorOutput_CameraOutput)(nil),
 		(*SensorOutput_DistanceOutput)(nil),
@@ -514,6 +534,7 @@ func file_outputs_wrapper_proto_init() {
 		(*SensorOutput_GenericBoolArray)(nil),
 		(*SensorOutput_GenericStringArray)(nil),
 		(*SensorOutput_LidarOutput)(nil),
+		(*SensorOutput_EnergyOutput)(nil),
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{

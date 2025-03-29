@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+package protobuf_msgs;
+
+option go_package = "ase/pb_outputs";
+
+//
+// This message definition reports about the energy consumed by the Rover.
+//
+
+message EnergySensorOutput {
+    // The measure supply voltage measured in volts (V).
+    float supplyVoltage = 1;
+
+    // The current amp draw in amperes (A) of the power supply source.
+    float currentAmps = 2;
+
+    // The current power output of the Rover measured in watts (W).
+    float powerWatts = 3;
+}

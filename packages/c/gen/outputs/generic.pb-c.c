@@ -367,11 +367,23 @@ void   protobuf_msgs__generic_string_array__free_unpacked
   assert(message->base.descriptor == &protobuf_msgs__generic_string_array__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-static const ProtobufCFieldDescriptor protobuf_msgs__generic_int_scalar__field_descriptors[1] =
+static const ProtobufCFieldDescriptor protobuf_msgs__generic_int_scalar__field_descriptors[2] =
 {
   {
-    "value",
+    "key",
     1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(ProtobufMsgs__GenericIntScalar, key),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "value",
+    2,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_INT32,
     0,   /* quantifier_offset */
@@ -383,12 +395,13 @@ static const ProtobufCFieldDescriptor protobuf_msgs__generic_int_scalar__field_d
   },
 };
 static const unsigned protobuf_msgs__generic_int_scalar__field_indices_by_name[] = {
-  0,   /* field[0] = value */
+  0,   /* field[0] = key */
+  1,   /* field[1] = value */
 };
 static const ProtobufCIntRange protobuf_msgs__generic_int_scalar__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 1 }
+  { 0, 2 }
 };
 const ProtobufCMessageDescriptor protobuf_msgs__generic_int_scalar__descriptor =
 {
@@ -398,18 +411,30 @@ const ProtobufCMessageDescriptor protobuf_msgs__generic_int_scalar__descriptor =
   "ProtobufMsgs__GenericIntScalar",
   "protobuf_msgs",
   sizeof(ProtobufMsgs__GenericIntScalar),
-  1,
+  2,
   protobuf_msgs__generic_int_scalar__field_descriptors,
   protobuf_msgs__generic_int_scalar__field_indices_by_name,
   1,  protobuf_msgs__generic_int_scalar__number_ranges,
   (ProtobufCMessageInit) protobuf_msgs__generic_int_scalar__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor protobuf_msgs__generic_float_scalar__field_descriptors[1] =
+static const ProtobufCFieldDescriptor protobuf_msgs__generic_float_scalar__field_descriptors[2] =
 {
   {
-    "value",
+    "key",
     1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(ProtobufMsgs__GenericFloatScalar, key),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "value",
+    2,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
@@ -421,12 +446,13 @@ static const ProtobufCFieldDescriptor protobuf_msgs__generic_float_scalar__field
   },
 };
 static const unsigned protobuf_msgs__generic_float_scalar__field_indices_by_name[] = {
-  0,   /* field[0] = value */
+  0,   /* field[0] = key */
+  1,   /* field[1] = value */
 };
 static const ProtobufCIntRange protobuf_msgs__generic_float_scalar__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 1 }
+  { 0, 2 }
 };
 const ProtobufCMessageDescriptor protobuf_msgs__generic_float_scalar__descriptor =
 {
@@ -436,18 +462,30 @@ const ProtobufCMessageDescriptor protobuf_msgs__generic_float_scalar__descriptor
   "ProtobufMsgs__GenericFloatScalar",
   "protobuf_msgs",
   sizeof(ProtobufMsgs__GenericFloatScalar),
-  1,
+  2,
   protobuf_msgs__generic_float_scalar__field_descriptors,
   protobuf_msgs__generic_float_scalar__field_indices_by_name,
   1,  protobuf_msgs__generic_float_scalar__number_ranges,
   (ProtobufCMessageInit) protobuf_msgs__generic_float_scalar__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor protobuf_msgs__generic_bool_scalar__field_descriptors[1] =
+static const ProtobufCFieldDescriptor protobuf_msgs__generic_bool_scalar__field_descriptors[2] =
 {
   {
-    "value",
+    "key",
     1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(ProtobufMsgs__GenericBoolScalar, key),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "value",
+    2,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_BOOL,
     0,   /* quantifier_offset */
@@ -459,12 +497,13 @@ static const ProtobufCFieldDescriptor protobuf_msgs__generic_bool_scalar__field_
   },
 };
 static const unsigned protobuf_msgs__generic_bool_scalar__field_indices_by_name[] = {
-  0,   /* field[0] = value */
+  0,   /* field[0] = key */
+  1,   /* field[1] = value */
 };
 static const ProtobufCIntRange protobuf_msgs__generic_bool_scalar__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 1 }
+  { 0, 2 }
 };
 const ProtobufCMessageDescriptor protobuf_msgs__generic_bool_scalar__descriptor =
 {
@@ -474,18 +513,30 @@ const ProtobufCMessageDescriptor protobuf_msgs__generic_bool_scalar__descriptor 
   "ProtobufMsgs__GenericBoolScalar",
   "protobuf_msgs",
   sizeof(ProtobufMsgs__GenericBoolScalar),
-  1,
+  2,
   protobuf_msgs__generic_bool_scalar__field_descriptors,
   protobuf_msgs__generic_bool_scalar__field_indices_by_name,
   1,  protobuf_msgs__generic_bool_scalar__number_ranges,
   (ProtobufCMessageInit) protobuf_msgs__generic_bool_scalar__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor protobuf_msgs__generic_string_scalar__field_descriptors[1] =
+static const ProtobufCFieldDescriptor protobuf_msgs__generic_string_scalar__field_descriptors[2] =
 {
   {
-    "value",
+    "key",
     1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(ProtobufMsgs__GenericStringScalar, key),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "value",
+    2,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_STRING,
     0,   /* quantifier_offset */
@@ -497,12 +548,13 @@ static const ProtobufCFieldDescriptor protobuf_msgs__generic_string_scalar__fiel
   },
 };
 static const unsigned protobuf_msgs__generic_string_scalar__field_indices_by_name[] = {
-  0,   /* field[0] = value */
+  0,   /* field[0] = key */
+  1,   /* field[1] = value */
 };
 static const ProtobufCIntRange protobuf_msgs__generic_string_scalar__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 1 }
+  { 0, 2 }
 };
 const ProtobufCMessageDescriptor protobuf_msgs__generic_string_scalar__descriptor =
 {
@@ -512,18 +564,30 @@ const ProtobufCMessageDescriptor protobuf_msgs__generic_string_scalar__descripto
   "ProtobufMsgs__GenericStringScalar",
   "protobuf_msgs",
   sizeof(ProtobufMsgs__GenericStringScalar),
-  1,
+  2,
   protobuf_msgs__generic_string_scalar__field_descriptors,
   protobuf_msgs__generic_string_scalar__field_indices_by_name,
   1,  protobuf_msgs__generic_string_scalar__number_ranges,
   (ProtobufCMessageInit) protobuf_msgs__generic_string_scalar__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor protobuf_msgs__generic_int_array__field_descriptors[1] =
+static const ProtobufCFieldDescriptor protobuf_msgs__generic_int_array__field_descriptors[2] =
 {
   {
-    "values",
+    "key",
     1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(ProtobufMsgs__GenericIntArray, key),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "values",
+    2,
     PROTOBUF_C_LABEL_REPEATED,
     PROTOBUF_C_TYPE_INT32,
     offsetof(ProtobufMsgs__GenericIntArray, n_values),
@@ -535,12 +599,13 @@ static const ProtobufCFieldDescriptor protobuf_msgs__generic_int_array__field_de
   },
 };
 static const unsigned protobuf_msgs__generic_int_array__field_indices_by_name[] = {
-  0,   /* field[0] = values */
+  0,   /* field[0] = key */
+  1,   /* field[1] = values */
 };
 static const ProtobufCIntRange protobuf_msgs__generic_int_array__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 1 }
+  { 0, 2 }
 };
 const ProtobufCMessageDescriptor protobuf_msgs__generic_int_array__descriptor =
 {
@@ -550,18 +615,30 @@ const ProtobufCMessageDescriptor protobuf_msgs__generic_int_array__descriptor =
   "ProtobufMsgs__GenericIntArray",
   "protobuf_msgs",
   sizeof(ProtobufMsgs__GenericIntArray),
-  1,
+  2,
   protobuf_msgs__generic_int_array__field_descriptors,
   protobuf_msgs__generic_int_array__field_indices_by_name,
   1,  protobuf_msgs__generic_int_array__number_ranges,
   (ProtobufCMessageInit) protobuf_msgs__generic_int_array__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor protobuf_msgs__generic_float_array__field_descriptors[1] =
+static const ProtobufCFieldDescriptor protobuf_msgs__generic_float_array__field_descriptors[2] =
 {
   {
-    "values",
+    "key",
     1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(ProtobufMsgs__GenericFloatArray, key),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "values",
+    2,
     PROTOBUF_C_LABEL_REPEATED,
     PROTOBUF_C_TYPE_FLOAT,
     offsetof(ProtobufMsgs__GenericFloatArray, n_values),
@@ -573,12 +650,13 @@ static const ProtobufCFieldDescriptor protobuf_msgs__generic_float_array__field_
   },
 };
 static const unsigned protobuf_msgs__generic_float_array__field_indices_by_name[] = {
-  0,   /* field[0] = values */
+  0,   /* field[0] = key */
+  1,   /* field[1] = values */
 };
 static const ProtobufCIntRange protobuf_msgs__generic_float_array__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 1 }
+  { 0, 2 }
 };
 const ProtobufCMessageDescriptor protobuf_msgs__generic_float_array__descriptor =
 {
@@ -588,18 +666,30 @@ const ProtobufCMessageDescriptor protobuf_msgs__generic_float_array__descriptor 
   "ProtobufMsgs__GenericFloatArray",
   "protobuf_msgs",
   sizeof(ProtobufMsgs__GenericFloatArray),
-  1,
+  2,
   protobuf_msgs__generic_float_array__field_descriptors,
   protobuf_msgs__generic_float_array__field_indices_by_name,
   1,  protobuf_msgs__generic_float_array__number_ranges,
   (ProtobufCMessageInit) protobuf_msgs__generic_float_array__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor protobuf_msgs__generic_bool_array__field_descriptors[1] =
+static const ProtobufCFieldDescriptor protobuf_msgs__generic_bool_array__field_descriptors[2] =
 {
   {
-    "values",
+    "key",
     1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(ProtobufMsgs__GenericBoolArray, key),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "values",
+    2,
     PROTOBUF_C_LABEL_REPEATED,
     PROTOBUF_C_TYPE_BOOL,
     offsetof(ProtobufMsgs__GenericBoolArray, n_values),
@@ -611,12 +701,13 @@ static const ProtobufCFieldDescriptor protobuf_msgs__generic_bool_array__field_d
   },
 };
 static const unsigned protobuf_msgs__generic_bool_array__field_indices_by_name[] = {
-  0,   /* field[0] = values */
+  0,   /* field[0] = key */
+  1,   /* field[1] = values */
 };
 static const ProtobufCIntRange protobuf_msgs__generic_bool_array__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 1 }
+  { 0, 2 }
 };
 const ProtobufCMessageDescriptor protobuf_msgs__generic_bool_array__descriptor =
 {
@@ -626,18 +717,30 @@ const ProtobufCMessageDescriptor protobuf_msgs__generic_bool_array__descriptor =
   "ProtobufMsgs__GenericBoolArray",
   "protobuf_msgs",
   sizeof(ProtobufMsgs__GenericBoolArray),
-  1,
+  2,
   protobuf_msgs__generic_bool_array__field_descriptors,
   protobuf_msgs__generic_bool_array__field_indices_by_name,
   1,  protobuf_msgs__generic_bool_array__number_ranges,
   (ProtobufCMessageInit) protobuf_msgs__generic_bool_array__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
-static const ProtobufCFieldDescriptor protobuf_msgs__generic_string_array__field_descriptors[1] =
+static const ProtobufCFieldDescriptor protobuf_msgs__generic_string_array__field_descriptors[2] =
 {
   {
-    "values",
+    "key",
     1,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_STRING,
+    0,   /* quantifier_offset */
+    offsetof(ProtobufMsgs__GenericStringArray, key),
+    NULL,
+    &protobuf_c_empty_string,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "values",
+    2,
     PROTOBUF_C_LABEL_REPEATED,
     PROTOBUF_C_TYPE_STRING,
     offsetof(ProtobufMsgs__GenericStringArray, n_values),
@@ -649,12 +752,13 @@ static const ProtobufCFieldDescriptor protobuf_msgs__generic_string_array__field
   },
 };
 static const unsigned protobuf_msgs__generic_string_array__field_indices_by_name[] = {
-  0,   /* field[0] = values */
+  0,   /* field[0] = key */
+  1,   /* field[1] = values */
 };
 static const ProtobufCIntRange protobuf_msgs__generic_string_array__number_ranges[1 + 1] =
 {
   { 1, 0 },
-  { 0, 1 }
+  { 0, 2 }
 };
 const ProtobufCMessageDescriptor protobuf_msgs__generic_string_array__descriptor =
 {
@@ -664,7 +768,7 @@ const ProtobufCMessageDescriptor protobuf_msgs__generic_string_array__descriptor
   "ProtobufMsgs__GenericStringArray",
   "protobuf_msgs",
   sizeof(ProtobufMsgs__GenericStringArray),
-  1,
+  2,
   protobuf_msgs__generic_string_array__field_descriptors,
   protobuf_msgs__generic_string_array__field_indices_by_name,
   1,  protobuf_msgs__generic_string_array__number_ranges,

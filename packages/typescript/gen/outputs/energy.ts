@@ -2,28 +2,28 @@
 // versions:
 //   protoc-gen-ts_proto  v2.7.0
 //   protoc               v3.12.4
-// source: outputs/current.proto
+// source: outputs/energy.proto
 
 /* eslint-disable */
 import { BinaryReader, BinaryWriter } from "@bufbuild/protobuf/wire";
 
 export const protobufPackage = "protobuf_msgs";
 
-export interface CurrentSensorOutput {
-  /** Bus/Supply voltage in volts (V) */
+export interface EnergySensorOutput {
+  /** The measure supply voltage measured in volts (V). */
   supplyVoltage: number;
-  /** Current in amperes (A) */
+  /** The current amp draw in amperes (A) of the power supply source. */
   currentAmps: number;
-  /** Power in watts (W) */
+  /** The current power output of the Rover measured in watts (W). */
   powerWatts: number;
 }
 
-function createBaseCurrentSensorOutput(): CurrentSensorOutput {
+function createBaseEnergySensorOutput(): EnergySensorOutput {
   return { supplyVoltage: 0, currentAmps: 0, powerWatts: 0 };
 }
 
-export const CurrentSensorOutput: MessageFns<CurrentSensorOutput> = {
-  encode(message: CurrentSensorOutput, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+export const EnergySensorOutput: MessageFns<EnergySensorOutput> = {
+  encode(message: EnergySensorOutput, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
     if (message.supplyVoltage !== 0) {
       writer.uint32(13).float(message.supplyVoltage);
     }
@@ -36,10 +36,10 @@ export const CurrentSensorOutput: MessageFns<CurrentSensorOutput> = {
     return writer;
   },
 
-  decode(input: BinaryReader | Uint8Array, length?: number): CurrentSensorOutput {
+  decode(input: BinaryReader | Uint8Array, length?: number): EnergySensorOutput {
     const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseCurrentSensorOutput();
+    const message = createBaseEnergySensorOutput();
     while (reader.pos < end) {
       const tag = reader.uint32();
       switch (tag >>> 3) {
@@ -76,7 +76,7 @@ export const CurrentSensorOutput: MessageFns<CurrentSensorOutput> = {
     return message;
   },
 
-  fromJSON(object: any): CurrentSensorOutput {
+  fromJSON(object: any): EnergySensorOutput {
     return {
       supplyVoltage: isSet(object.supplyVoltage) ? globalThis.Number(object.supplyVoltage) : 0,
       currentAmps: isSet(object.currentAmps) ? globalThis.Number(object.currentAmps) : 0,
@@ -84,7 +84,7 @@ export const CurrentSensorOutput: MessageFns<CurrentSensorOutput> = {
     };
   },
 
-  toJSON(message: CurrentSensorOutput): unknown {
+  toJSON(message: EnergySensorOutput): unknown {
     const obj: any = {};
     if (message.supplyVoltage !== 0) {
       obj.supplyVoltage = message.supplyVoltage;
@@ -98,11 +98,11 @@ export const CurrentSensorOutput: MessageFns<CurrentSensorOutput> = {
     return obj;
   },
 
-  create<I extends Exact<DeepPartial<CurrentSensorOutput>, I>>(base?: I): CurrentSensorOutput {
-    return CurrentSensorOutput.fromPartial(base ?? ({} as any));
+  create<I extends Exact<DeepPartial<EnergySensorOutput>, I>>(base?: I): EnergySensorOutput {
+    return EnergySensorOutput.fromPartial(base ?? ({} as any));
   },
-  fromPartial<I extends Exact<DeepPartial<CurrentSensorOutput>, I>>(object: I): CurrentSensorOutput {
-    const message = createBaseCurrentSensorOutput();
+  fromPartial<I extends Exact<DeepPartial<EnergySensorOutput>, I>>(object: I): EnergySensorOutput {
+    const message = createBaseEnergySensorOutput();
     message.supplyVoltage = object.supplyVoltage ?? 0;
     message.currentAmps = object.currentAmps ?? 0;
     message.powerWatts = object.powerWatts ?? 0;

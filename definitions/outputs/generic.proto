@@ -10,40 +10,48 @@ option go_package = "ase/pb_outputs";
 
 // This message holds a single integer value, it will be plotted in the debug view of roverctl
 message GenericIntScalar {
-    int32 value = 1;
+    string key = 1;
+    int32 value = 2;
 }
 
 // This message holds a single float value, it will be plotted in the debug view of roverctl
 message GenericFloatScalar {
-    float value = 1;
+    string key = 1;
+    float value = 2;
 }
 
 // This message holds a single boolean value, it will *NOT* be plotted in the debug view of roverctl
 message GenericBoolScalar {
-    bool value = 1;
+    string key = 1;
+    bool value = 2;
 }
 
 // This message holds a single string value, it will *NOT* be plotted in the debug view of roverctl
 message GenericStringScalar {
-    string value = 1;
+    string key = 1;
+    string value = 2;
 }
 
 // This message holds an array of integer values, it will *NOT* be plotted in the debug view of roverctl
 message GenericIntArray {
-    repeated int32 values = 1;
+    string key = 1;
+    repeated int32 values = 2;
 }
 
 // This message holds an array of float values, it will *NOT* be plotted in the debug view of roverctl
 message GenericFloatArray {
-    repeated float values = 1;
+    string key = 1;
+    repeated float values = 2;
 }
 
 // This message holds an array of boolean values, it will *NOT* be plotted in the debug view of roverctl
 message GenericBoolArray {
-    repeated bool values = 1;
+    string key = 1;
+    repeated bool values = 2;
 }
 
 // This message holds an array of string values, it will *NOT* be plotted in the debug view of roverctl
 message GenericStringArray {
-    repeated string values = 1;
+    string key = 1;
+    repeated string values = 2;
 }

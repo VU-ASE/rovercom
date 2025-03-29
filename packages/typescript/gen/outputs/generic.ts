@@ -11,52 +11,63 @@ export const protobufPackage = "protobuf_msgs";
 
 /** This message holds a single integer value, it will be plotted in the debug view of roverctl */
 export interface GenericIntScalar {
+  key: string;
   value: number;
 }
 
 /** This message holds a single float value, it will be plotted in the debug view of roverctl */
 export interface GenericFloatScalar {
+  key: string;
   value: number;
 }
 
 /** This message holds a single boolean value, it will *NOT* be plotted in the debug view of roverctl */
 export interface GenericBoolScalar {
+  key: string;
   value: boolean;
 }
 
 /** This message holds a single string value, it will *NOT* be plotted in the debug view of roverctl */
 export interface GenericStringScalar {
+  key: string;
   value: string;
 }
 
 /** This message holds an array of integer values, it will *NOT* be plotted in the debug view of roverctl */
 export interface GenericIntArray {
+  key: string;
   values: number[];
 }
 
 /** This message holds an array of float values, it will *NOT* be plotted in the debug view of roverctl */
 export interface GenericFloatArray {
+  key: string;
   values: number[];
 }
 
 /** This message holds an array of boolean values, it will *NOT* be plotted in the debug view of roverctl */
 export interface GenericBoolArray {
+  key: string;
   values: boolean[];
 }
 
 /** This message holds an array of string values, it will *NOT* be plotted in the debug view of roverctl */
 export interface GenericStringArray {
+  key: string;
   values: string[];
 }
 
 function createBaseGenericIntScalar(): GenericIntScalar {
-  return { value: 0 };
+  return { key: "", value: 0 };
 }
 
 export const GenericIntScalar: MessageFns<GenericIntScalar> = {
   encode(message: GenericIntScalar, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.key !== "") {
+      writer.uint32(10).string(message.key);
+    }
     if (message.value !== 0) {
-      writer.uint32(8).int32(message.value);
+      writer.uint32(16).int32(message.value);
     }
     return writer;
   },
@@ -69,7 +80,15 @@ export const GenericIntScalar: MessageFns<GenericIntScalar> = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1: {
-          if (tag !== 8) {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.key = reader.string();
+          continue;
+        }
+        case 2: {
+          if (tag !== 16) {
             break;
           }
 
@@ -86,11 +105,17 @@ export const GenericIntScalar: MessageFns<GenericIntScalar> = {
   },
 
   fromJSON(object: any): GenericIntScalar {
-    return { value: isSet(object.value) ? globalThis.Number(object.value) : 0 };
+    return {
+      key: isSet(object.key) ? globalThis.String(object.key) : "",
+      value: isSet(object.value) ? globalThis.Number(object.value) : 0,
+    };
   },
 
   toJSON(message: GenericIntScalar): unknown {
     const obj: any = {};
+    if (message.key !== "") {
+      obj.key = message.key;
+    }
     if (message.value !== 0) {
       obj.value = Math.round(message.value);
     }
@@ -102,19 +127,23 @@ export const GenericIntScalar: MessageFns<GenericIntScalar> = {
   },
   fromPartial<I extends Exact<DeepPartial<GenericIntScalar>, I>>(object: I): GenericIntScalar {
     const message = createBaseGenericIntScalar();
+    message.key = object.key ?? "";
     message.value = object.value ?? 0;
     return message;
   },
 };
 
 function createBaseGenericFloatScalar(): GenericFloatScalar {
-  return { value: 0 };
+  return { key: "", value: 0 };
 }
 
 export const GenericFloatScalar: MessageFns<GenericFloatScalar> = {
   encode(message: GenericFloatScalar, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.key !== "") {
+      writer.uint32(10).string(message.key);
+    }
     if (message.value !== 0) {
-      writer.uint32(13).float(message.value);
+      writer.uint32(21).float(message.value);
     }
     return writer;
   },
@@ -127,7 +156,15 @@ export const GenericFloatScalar: MessageFns<GenericFloatScalar> = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1: {
-          if (tag !== 13) {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.key = reader.string();
+          continue;
+        }
+        case 2: {
+          if (tag !== 21) {
             break;
           }
 
@@ -144,11 +181,17 @@ export const GenericFloatScalar: MessageFns<GenericFloatScalar> = {
   },
 
   fromJSON(object: any): GenericFloatScalar {
-    return { value: isSet(object.value) ? globalThis.Number(object.value) : 0 };
+    return {
+      key: isSet(object.key) ? globalThis.String(object.key) : "",
+      value: isSet(object.value) ? globalThis.Number(object.value) : 0,
+    };
   },
 
   toJSON(message: GenericFloatScalar): unknown {
     const obj: any = {};
+    if (message.key !== "") {
+      obj.key = message.key;
+    }
     if (message.value !== 0) {
       obj.value = message.value;
     }
@@ -160,19 +203,23 @@ export const GenericFloatScalar: MessageFns<GenericFloatScalar> = {
   },
   fromPartial<I extends Exact<DeepPartial<GenericFloatScalar>, I>>(object: I): GenericFloatScalar {
     const message = createBaseGenericFloatScalar();
+    message.key = object.key ?? "";
     message.value = object.value ?? 0;
     return message;
   },
 };
 
 function createBaseGenericBoolScalar(): GenericBoolScalar {
-  return { value: false };
+  return { key: "", value: false };
 }
 
 export const GenericBoolScalar: MessageFns<GenericBoolScalar> = {
   encode(message: GenericBoolScalar, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.key !== "") {
+      writer.uint32(10).string(message.key);
+    }
     if (message.value !== false) {
-      writer.uint32(8).bool(message.value);
+      writer.uint32(16).bool(message.value);
     }
     return writer;
   },
@@ -185,7 +232,15 @@ export const GenericBoolScalar: MessageFns<GenericBoolScalar> = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1: {
-          if (tag !== 8) {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.key = reader.string();
+          continue;
+        }
+        case 2: {
+          if (tag !== 16) {
             break;
           }
 
@@ -202,11 +257,17 @@ export const GenericBoolScalar: MessageFns<GenericBoolScalar> = {
   },
 
   fromJSON(object: any): GenericBoolScalar {
-    return { value: isSet(object.value) ? globalThis.Boolean(object.value) : false };
+    return {
+      key: isSet(object.key) ? globalThis.String(object.key) : "",
+      value: isSet(object.value) ? globalThis.Boolean(object.value) : false,
+    };
   },
 
   toJSON(message: GenericBoolScalar): unknown {
     const obj: any = {};
+    if (message.key !== "") {
+      obj.key = message.key;
+    }
     if (message.value !== false) {
       obj.value = message.value;
     }
@@ -218,19 +279,23 @@ export const GenericBoolScalar: MessageFns<GenericBoolScalar> = {
   },
   fromPartial<I extends Exact<DeepPartial<GenericBoolScalar>, I>>(object: I): GenericBoolScalar {
     const message = createBaseGenericBoolScalar();
+    message.key = object.key ?? "";
     message.value = object.value ?? false;
     return message;
   },
 };
 
 function createBaseGenericStringScalar(): GenericStringScalar {
-  return { value: "" };
+  return { key: "", value: "" };
 }
 
 export const GenericStringScalar: MessageFns<GenericStringScalar> = {
   encode(message: GenericStringScalar, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.key !== "") {
+      writer.uint32(10).string(message.key);
+    }
     if (message.value !== "") {
-      writer.uint32(10).string(message.value);
+      writer.uint32(18).string(message.value);
     }
     return writer;
   },
@@ -247,6 +312,14 @@ export const GenericStringScalar: MessageFns<GenericStringScalar> = {
             break;
           }
 
+          message.key = reader.string();
+          continue;
+        }
+        case 2: {
+          if (tag !== 18) {
+            break;
+          }
+
           message.value = reader.string();
           continue;
         }
@@ -260,11 +333,17 @@ export const GenericStringScalar: MessageFns<GenericStringScalar> = {
   },
 
   fromJSON(object: any): GenericStringScalar {
-    return { value: isSet(object.value) ? globalThis.String(object.value) : "" };
+    return {
+      key: isSet(object.key) ? globalThis.String(object.key) : "",
+      value: isSet(object.value) ? globalThis.String(object.value) : "",
+    };
   },
 
   toJSON(message: GenericStringScalar): unknown {
     const obj: any = {};
+    if (message.key !== "") {
+      obj.key = message.key;
+    }
     if (message.value !== "") {
       obj.value = message.value;
     }
@@ -276,18 +355,22 @@ export const GenericStringScalar: MessageFns<GenericStringScalar> = {
   },
   fromPartial<I extends Exact<DeepPartial<GenericStringScalar>, I>>(object: I): GenericStringScalar {
     const message = createBaseGenericStringScalar();
+    message.key = object.key ?? "";
     message.value = object.value ?? "";
     return message;
   },
 };
 
 function createBaseGenericIntArray(): GenericIntArray {
-  return { values: [] };
+  return { key: "", values: [] };
 }
 
 export const GenericIntArray: MessageFns<GenericIntArray> = {
   encode(message: GenericIntArray, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    writer.uint32(10).fork();
+    if (message.key !== "") {
+      writer.uint32(10).string(message.key);
+    }
+    writer.uint32(18).fork();
     for (const v of message.values) {
       writer.int32(v);
     }
@@ -303,13 +386,21 @@ export const GenericIntArray: MessageFns<GenericIntArray> = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1: {
-          if (tag === 8) {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.key = reader.string();
+          continue;
+        }
+        case 2: {
+          if (tag === 16) {
             message.values.push(reader.int32());
 
             continue;
           }
 
-          if (tag === 10) {
+          if (tag === 18) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
               message.values.push(reader.int32());
@@ -331,12 +422,16 @@ export const GenericIntArray: MessageFns<GenericIntArray> = {
 
   fromJSON(object: any): GenericIntArray {
     return {
+      key: isSet(object.key) ? globalThis.String(object.key) : "",
       values: globalThis.Array.isArray(object?.values) ? object.values.map((e: any) => globalThis.Number(e)) : [],
     };
   },
 
   toJSON(message: GenericIntArray): unknown {
     const obj: any = {};
+    if (message.key !== "") {
+      obj.key = message.key;
+    }
     if (message.values?.length) {
       obj.values = message.values.map((e) => Math.round(e));
     }
@@ -348,18 +443,22 @@ export const GenericIntArray: MessageFns<GenericIntArray> = {
   },
   fromPartial<I extends Exact<DeepPartial<GenericIntArray>, I>>(object: I): GenericIntArray {
     const message = createBaseGenericIntArray();
+    message.key = object.key ?? "";
     message.values = object.values?.map((e) => e) || [];
     return message;
   },
 };
 
 function createBaseGenericFloatArray(): GenericFloatArray {
-  return { values: [] };
+  return { key: "", values: [] };
 }
 
 export const GenericFloatArray: MessageFns<GenericFloatArray> = {
   encode(message: GenericFloatArray, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    writer.uint32(10).fork();
+    if (message.key !== "") {
+      writer.uint32(10).string(message.key);
+    }
+    writer.uint32(18).fork();
     for (const v of message.values) {
       writer.float(v);
     }
@@ -375,13 +474,21 @@ export const GenericFloatArray: MessageFns<GenericFloatArray> = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1: {
-          if (tag === 13) {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.key = reader.string();
+          continue;
+        }
+        case 2: {
+          if (tag === 21) {
             message.values.push(reader.float());
 
             continue;
           }
 
-          if (tag === 10) {
+          if (tag === 18) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
               message.values.push(reader.float());
@@ -403,12 +510,16 @@ export const GenericFloatArray: MessageFns<GenericFloatArray> = {
 
   fromJSON(object: any): GenericFloatArray {
     return {
+      key: isSet(object.key) ? globalThis.String(object.key) : "",
       values: globalThis.Array.isArray(object?.values) ? object.values.map((e: any) => globalThis.Number(e)) : [],
     };
   },
 
   toJSON(message: GenericFloatArray): unknown {
     const obj: any = {};
+    if (message.key !== "") {
+      obj.key = message.key;
+    }
     if (message.values?.length) {
       obj.values = message.values;
     }
@@ -420,18 +531,22 @@ export const GenericFloatArray: MessageFns<GenericFloatArray> = {
   },
   fromPartial<I extends Exact<DeepPartial<GenericFloatArray>, I>>(object: I): GenericFloatArray {
     const message = createBaseGenericFloatArray();
+    message.key = object.key ?? "";
     message.values = object.values?.map((e) => e) || [];
     return message;
   },
 };
 
 function createBaseGenericBoolArray(): GenericBoolArray {
-  return { values: [] };
+  return { key: "", values: [] };
 }
 
 export const GenericBoolArray: MessageFns<GenericBoolArray> = {
   encode(message: GenericBoolArray, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
-    writer.uint32(10).fork();
+    if (message.key !== "") {
+      writer.uint32(10).string(message.key);
+    }
+    writer.uint32(18).fork();
     for (const v of message.values) {
       writer.bool(v);
     }
@@ -447,13 +562,21 @@ export const GenericBoolArray: MessageFns<GenericBoolArray> = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1: {
-          if (tag === 8) {
+          if (tag !== 10) {
+            break;
+          }
+
+          message.key = reader.string();
+          continue;
+        }
+        case 2: {
+          if (tag === 16) {
             message.values.push(reader.bool());
 
             continue;
           }
 
-          if (tag === 10) {
+          if (tag === 18) {
             const end2 = reader.uint32() + reader.pos;
             while (reader.pos < end2) {
               message.values.push(reader.bool());
@@ -475,12 +598,16 @@ export const GenericBoolArray: MessageFns<GenericBoolArray> = {
 
   fromJSON(object: any): GenericBoolArray {
     return {
+      key: isSet(object.key) ? globalThis.String(object.key) : "",
       values: globalThis.Array.isArray(object?.values) ? object.values.map((e: any) => globalThis.Boolean(e)) : [],
     };
   },
 
   toJSON(message: GenericBoolArray): unknown {
     const obj: any = {};
+    if (message.key !== "") {
+      obj.key = message.key;
+    }
     if (message.values?.length) {
       obj.values = message.values;
     }
@@ -492,19 +619,23 @@ export const GenericBoolArray: MessageFns<GenericBoolArray> = {
   },
   fromPartial<I extends Exact<DeepPartial<GenericBoolArray>, I>>(object: I): GenericBoolArray {
     const message = createBaseGenericBoolArray();
+    message.key = object.key ?? "";
     message.values = object.values?.map((e) => e) || [];
     return message;
   },
 };
 
 function createBaseGenericStringArray(): GenericStringArray {
-  return { values: [] };
+  return { key: "", values: [] };
 }
 
 export const GenericStringArray: MessageFns<GenericStringArray> = {
   encode(message: GenericStringArray, writer: BinaryWriter = new BinaryWriter()): BinaryWriter {
+    if (message.key !== "") {
+      writer.uint32(10).string(message.key);
+    }
     for (const v of message.values) {
-      writer.uint32(10).string(v!);
+      writer.uint32(18).string(v!);
     }
     return writer;
   },
@@ -518,6 +649,14 @@ export const GenericStringArray: MessageFns<GenericStringArray> = {
       switch (tag >>> 3) {
         case 1: {
           if (tag !== 10) {
+            break;
+          }
+
+          message.key = reader.string();
+          continue;
+        }
+        case 2: {
+          if (tag !== 18) {
             break;
           }
 
@@ -535,12 +674,16 @@ export const GenericStringArray: MessageFns<GenericStringArray> = {
 
   fromJSON(object: any): GenericStringArray {
     return {
+      key: isSet(object.key) ? globalThis.String(object.key) : "",
       values: globalThis.Array.isArray(object?.values) ? object.values.map((e: any) => globalThis.String(e)) : [],
     };
   },
 
   toJSON(message: GenericStringArray): unknown {
     const obj: any = {};
+    if (message.key !== "") {
+      obj.key = message.key;
+    }
     if (message.values?.length) {
       obj.values = message.values;
     }
@@ -552,6 +695,7 @@ export const GenericStringArray: MessageFns<GenericStringArray> = {
   },
   fromPartial<I extends Exact<DeepPartial<GenericStringArray>, I>>(object: I): GenericStringArray {
     const message = createBaseGenericStringArray();
+    message.key = object.key ?? "";
     message.values = object.values?.map((e) => e) || [];
     return message;
   },

@@ -36,11 +36,12 @@ typedef struct _ProtobufMsgs__GenericStringArray ProtobufMsgs__GenericStringArra
 struct  _ProtobufMsgs__GenericIntScalar
 {
   ProtobufCMessage base;
+  char *key;
   int32_t value;
 };
 #define PROTOBUF_MSGS__GENERIC_INT_SCALAR__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&protobuf_msgs__generic_int_scalar__descriptor) \
-    , 0 }
+    , (char *)protobuf_c_empty_string, 0 }
 
 
 /*
@@ -49,11 +50,12 @@ struct  _ProtobufMsgs__GenericIntScalar
 struct  _ProtobufMsgs__GenericFloatScalar
 {
   ProtobufCMessage base;
+  char *key;
   float value;
 };
 #define PROTOBUF_MSGS__GENERIC_FLOAT_SCALAR__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&protobuf_msgs__generic_float_scalar__descriptor) \
-    , 0 }
+    , (char *)protobuf_c_empty_string, 0 }
 
 
 /*
@@ -62,11 +64,12 @@ struct  _ProtobufMsgs__GenericFloatScalar
 struct  _ProtobufMsgs__GenericBoolScalar
 {
   ProtobufCMessage base;
+  char *key;
   protobuf_c_boolean value;
 };
 #define PROTOBUF_MSGS__GENERIC_BOOL_SCALAR__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&protobuf_msgs__generic_bool_scalar__descriptor) \
-    , 0 }
+    , (char *)protobuf_c_empty_string, 0 }
 
 
 /*
@@ -75,11 +78,12 @@ struct  _ProtobufMsgs__GenericBoolScalar
 struct  _ProtobufMsgs__GenericStringScalar
 {
   ProtobufCMessage base;
+  char *key;
   char *value;
 };
 #define PROTOBUF_MSGS__GENERIC_STRING_SCALAR__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&protobuf_msgs__generic_string_scalar__descriptor) \
-    , (char *)protobuf_c_empty_string }
+    , (char *)protobuf_c_empty_string, (char *)protobuf_c_empty_string }
 
 
 /*
@@ -88,12 +92,13 @@ struct  _ProtobufMsgs__GenericStringScalar
 struct  _ProtobufMsgs__GenericIntArray
 {
   ProtobufCMessage base;
+  char *key;
   size_t n_values;
   int32_t *values;
 };
 #define PROTOBUF_MSGS__GENERIC_INT_ARRAY__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&protobuf_msgs__generic_int_array__descriptor) \
-    , 0,NULL }
+    , (char *)protobuf_c_empty_string, 0,NULL }
 
 
 /*
@@ -102,12 +107,13 @@ struct  _ProtobufMsgs__GenericIntArray
 struct  _ProtobufMsgs__GenericFloatArray
 {
   ProtobufCMessage base;
+  char *key;
   size_t n_values;
   float *values;
 };
 #define PROTOBUF_MSGS__GENERIC_FLOAT_ARRAY__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&protobuf_msgs__generic_float_array__descriptor) \
-    , 0,NULL }
+    , (char *)protobuf_c_empty_string, 0,NULL }
 
 
 /*
@@ -116,12 +122,13 @@ struct  _ProtobufMsgs__GenericFloatArray
 struct  _ProtobufMsgs__GenericBoolArray
 {
   ProtobufCMessage base;
+  char *key;
   size_t n_values;
   protobuf_c_boolean *values;
 };
 #define PROTOBUF_MSGS__GENERIC_BOOL_ARRAY__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&protobuf_msgs__generic_bool_array__descriptor) \
-    , 0,NULL }
+    , (char *)protobuf_c_empty_string, 0,NULL }
 
 
 /*
@@ -130,12 +137,13 @@ struct  _ProtobufMsgs__GenericBoolArray
 struct  _ProtobufMsgs__GenericStringArray
 {
   ProtobufCMessage base;
+  char *key;
   size_t n_values;
   char **values;
 };
 #define PROTOBUF_MSGS__GENERIC_STRING_ARRAY__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&protobuf_msgs__generic_string_array__descriptor) \
-    , 0,NULL }
+    , (char *)protobuf_c_empty_string, 0,NULL }
 
 
 /* ProtobufMsgs__GenericIntScalar methods */

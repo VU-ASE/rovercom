@@ -24,7 +24,8 @@ const (
 // This message holds a single integer value, it will be plotted in the debug view of roverctl
 type GenericIntScalar struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Value         int32                  `protobuf:"varint,1,opt,name=value,proto3" json:"value,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Value         int32                  `protobuf:"varint,2,opt,name=value,proto3" json:"value,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -59,6 +60,13 @@ func (*GenericIntScalar) Descriptor() ([]byte, []int) {
 	return file_outputs_generic_proto_rawDescGZIP(), []int{0}
 }
 
+func (x *GenericIntScalar) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
 func (x *GenericIntScalar) GetValue() int32 {
 	if x != nil {
 		return x.Value
@@ -69,7 +77,8 @@ func (x *GenericIntScalar) GetValue() int32 {
 // This message holds a single float value, it will be plotted in the debug view of roverctl
 type GenericFloatScalar struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Value         float32                `protobuf:"fixed32,1,opt,name=value,proto3" json:"value,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Value         float32                `protobuf:"fixed32,2,opt,name=value,proto3" json:"value,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -104,6 +113,13 @@ func (*GenericFloatScalar) Descriptor() ([]byte, []int) {
 	return file_outputs_generic_proto_rawDescGZIP(), []int{1}
 }
 
+func (x *GenericFloatScalar) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
 func (x *GenericFloatScalar) GetValue() float32 {
 	if x != nil {
 		return x.Value
@@ -114,7 +130,8 @@ func (x *GenericFloatScalar) GetValue() float32 {
 // This message holds a single boolean value, it will *NOT* be plotted in the debug view of roverctl
 type GenericBoolScalar struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Value         bool                   `protobuf:"varint,1,opt,name=value,proto3" json:"value,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Value         bool                   `protobuf:"varint,2,opt,name=value,proto3" json:"value,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -149,6 +166,13 @@ func (*GenericBoolScalar) Descriptor() ([]byte, []int) {
 	return file_outputs_generic_proto_rawDescGZIP(), []int{2}
 }
 
+func (x *GenericBoolScalar) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
 func (x *GenericBoolScalar) GetValue() bool {
 	if x != nil {
 		return x.Value
@@ -159,7 +183,8 @@ func (x *GenericBoolScalar) GetValue() bool {
 // This message holds a single string value, it will *NOT* be plotted in the debug view of roverctl
 type GenericStringScalar struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Value         string                 `protobuf:"bytes,1,opt,name=value,proto3" json:"value,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Value         string                 `protobuf:"bytes,2,opt,name=value,proto3" json:"value,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -194,6 +219,13 @@ func (*GenericStringScalar) Descriptor() ([]byte, []int) {
 	return file_outputs_generic_proto_rawDescGZIP(), []int{3}
 }
 
+func (x *GenericStringScalar) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
 func (x *GenericStringScalar) GetValue() string {
 	if x != nil {
 		return x.Value
@@ -204,7 +236,8 @@ func (x *GenericStringScalar) GetValue() string {
 // This message holds an array of integer values, it will *NOT* be plotted in the debug view of roverctl
 type GenericIntArray struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Values        []int32                `protobuf:"varint,1,rep,packed,name=values,proto3" json:"values,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Values        []int32                `protobuf:"varint,2,rep,packed,name=values,proto3" json:"values,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -239,6 +272,13 @@ func (*GenericIntArray) Descriptor() ([]byte, []int) {
 	return file_outputs_generic_proto_rawDescGZIP(), []int{4}
 }
 
+func (x *GenericIntArray) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
 func (x *GenericIntArray) GetValues() []int32 {
 	if x != nil {
 		return x.Values
@@ -249,7 +289,8 @@ func (x *GenericIntArray) GetValues() []int32 {
 // This message holds an array of float values, it will *NOT* be plotted in the debug view of roverctl
 type GenericFloatArray struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Values        []float32              `protobuf:"fixed32,1,rep,packed,name=values,proto3" json:"values,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Values        []float32              `protobuf:"fixed32,2,rep,packed,name=values,proto3" json:"values,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -284,6 +325,13 @@ func (*GenericFloatArray) Descriptor() ([]byte, []int) {
 	return file_outputs_generic_proto_rawDescGZIP(), []int{5}
 }
 
+func (x *GenericFloatArray) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
 func (x *GenericFloatArray) GetValues() []float32 {
 	if x != nil {
 		return x.Values
@@ -294,7 +342,8 @@ func (x *GenericFloatArray) GetValues() []float32 {
 // This message holds an array of boolean values, it will *NOT* be plotted in the debug view of roverctl
 type GenericBoolArray struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Values        []bool                 `protobuf:"varint,1,rep,packed,name=values,proto3" json:"values,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Values        []bool                 `protobuf:"varint,2,rep,packed,name=values,proto3" json:"values,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -329,6 +378,13 @@ func (*GenericBoolArray) Descriptor() ([]byte, []int) {
 	return file_outputs_generic_proto_rawDescGZIP(), []int{6}
 }
 
+func (x *GenericBoolArray) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
 func (x *GenericBoolArray) GetValues() []bool {
 	if x != nil {
 		return x.Values
@@ -339,7 +395,8 @@ func (x *GenericBoolArray) GetValues() []bool {
 // This message holds an array of string values, it will *NOT* be plotted in the debug view of roverctl
 type GenericStringArray struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	Values        []string               `protobuf:"bytes,1,rep,name=values,proto3" json:"values,omitempty"`
+	Key           string                 `protobuf:"bytes,1,opt,name=key,proto3" json:"key,omitempty"`
+	Values        []string               `protobuf:"bytes,2,rep,name=values,proto3" json:"values,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -374,6 +431,13 @@ func (*GenericStringArray) Descriptor() ([]byte, []int) {
 	return file_outputs_generic_proto_rawDescGZIP(), []int{7}
 }
 
+func (x *GenericStringArray) GetKey() string {
+	if x != nil {
+		return x.Key
+	}
+	return ""
+}
+
 func (x *GenericStringArray) GetValues() []string {
 	if x != nil {
 		return x.Values
@@ -385,23 +449,31 @@ var File_outputs_generic_proto protoreflect.FileDescriptor
 
 const file_outputs_generic_proto_rawDesc = "" +
 	"\n" +
-	"\x15outputs/generic.proto\x12\rprotobuf_msgs\"(\n" +
-	"\x10GenericIntScalar\x12\x14\n" +
-	"\x05value\x18\x01 \x01(\x05R\x05value\"*\n" +
-	"\x12GenericFloatScalar\x12\x14\n" +
-	"\x05value\x18\x01 \x01(\x02R\x05value\")\n" +
-	"\x11GenericBoolScalar\x12\x14\n" +
-	"\x05value\x18\x01 \x01(\bR\x05value\"+\n" +
-	"\x13GenericStringScalar\x12\x14\n" +
-	"\x05value\x18\x01 \x01(\tR\x05value\")\n" +
-	"\x0fGenericIntArray\x12\x16\n" +
-	"\x06values\x18\x01 \x03(\x05R\x06values\"+\n" +
-	"\x11GenericFloatArray\x12\x16\n" +
-	"\x06values\x18\x01 \x03(\x02R\x06values\"*\n" +
-	"\x10GenericBoolArray\x12\x16\n" +
-	"\x06values\x18\x01 \x03(\bR\x06values\",\n" +
-	"\x12GenericStringArray\x12\x16\n" +
-	"\x06values\x18\x01 \x03(\tR\x06valuesB\x10Z\x0ease/pb_outputsb\x06proto3"
+	"\x15outputs/generic.proto\x12\rprotobuf_msgs\":\n" +
+	"\x10GenericIntScalar\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x05R\x05value\"<\n" +
+	"\x12GenericFloatScalar\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\x02R\x05value\";\n" +
+	"\x11GenericBoolScalar\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\bR\x05value\"=\n" +
+	"\x13GenericStringScalar\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x14\n" +
+	"\x05value\x18\x02 \x01(\tR\x05value\";\n" +
+	"\x0fGenericIntArray\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x16\n" +
+	"\x06values\x18\x02 \x03(\x05R\x06values\"=\n" +
+	"\x11GenericFloatArray\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x16\n" +
+	"\x06values\x18\x02 \x03(\x02R\x06values\"<\n" +
+	"\x10GenericBoolArray\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x16\n" +
+	"\x06values\x18\x02 \x03(\bR\x06values\">\n" +
+	"\x12GenericStringArray\x12\x10\n" +
+	"\x03key\x18\x01 \x01(\tR\x03key\x12\x16\n" +
+	"\x06values\x18\x02 \x03(\tR\x06valuesB\x10Z\x0ease/pb_outputsb\x06proto3"
 
 var (
 	file_outputs_generic_proto_rawDescOnce sync.Once

@@ -25,6 +25,7 @@ PROTOBUF_C__BEGIN_DECLS
 #include "outputs/laptime.pb-c.h"
 #include "outputs/generic.pb-c.h"
 #include "outputs/lidar.pb-c.h"
+#include "outputs/energy.pb-c.h"
 
 typedef struct _ProtobufMsgs__SensorOutput ProtobufMsgs__SensorOutput;
 
@@ -53,7 +54,8 @@ typedef enum {
   PROTOBUF_MSGS__SENSOR_OUTPUT__SENSOR_OUTPUT_GENERIC_FLOAT_ARRAY = 18,
   PROTOBUF_MSGS__SENSOR_OUTPUT__SENSOR_OUTPUT_GENERIC_BOOL_ARRAY = 19,
   PROTOBUF_MSGS__SENSOR_OUTPUT__SENSOR_OUTPUT_GENERIC_STRING_ARRAY = 20,
-  PROTOBUF_MSGS__SENSOR_OUTPUT__SENSOR_OUTPUT_LIDAR_OUTPUT = 21
+  PROTOBUF_MSGS__SENSOR_OUTPUT__SENSOR_OUTPUT_LIDAR_OUTPUT = 21,
+  PROTOBUF_MSGS__SENSOR_OUTPUT__SENSOR_OUTPUT_ENERGY_OUTPUT = 22
     PROTOBUF_C__FORCE_ENUM_TO_BE_INT_SIZE(PROTOBUF_MSGS__SENSOR_OUTPUT__SENSOR_OUTPUT)
 } ProtobufMsgs__SensorOutput__SensorOutputCase;
 
@@ -93,6 +95,7 @@ struct  _ProtobufMsgs__SensorOutput
     ProtobufMsgs__GenericBoolArray *genericboolarray;
     ProtobufMsgs__GenericStringArray *genericstringarray;
     ProtobufMsgs__LidarSensorOutput *lidaroutput;
+    ProtobufMsgs__EnergySensorOutput *energyoutput;
   };
 };
 #define PROTOBUF_MSGS__SENSOR_OUTPUT__INIT \

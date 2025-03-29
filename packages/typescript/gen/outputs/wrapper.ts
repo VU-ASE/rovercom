@@ -10,6 +10,7 @@ import { BatterySensorOutput } from "./battery";
 import { CameraSensorOutput } from "./camera";
 import { ControllerOutput } from "./controller";
 import { DistanceSensorOutput } from "./distance";
+import { EnergySensorOutput } from "./energy";
 import {
   GenericBoolArray,
   GenericBoolScalar,
@@ -57,6 +58,7 @@ export interface SensorOutput {
   genericBoolArray?: GenericBoolArray | undefined;
   genericStringArray?: GenericStringArray | undefined;
   lidarOutput?: LidarSensorOutput | undefined;
+  energyOutput?: EnergySensorOutput | undefined;
 }
 
 function createBaseSensorOutput(): SensorOutput {
@@ -82,6 +84,7 @@ function createBaseSensorOutput(): SensorOutput {
     genericBoolArray: undefined,
     genericStringArray: undefined,
     lidarOutput: undefined,
+    energyOutput: undefined,
   };
 }
 
@@ -149,6 +152,9 @@ export const SensorOutput: MessageFns<SensorOutput> = {
     }
     if (message.lidarOutput !== undefined) {
       LidarSensorOutput.encode(message.lidarOutput, writer.uint32(170).fork()).join();
+    }
+    if (message.energyOutput !== undefined) {
+      EnergySensorOutput.encode(message.energyOutput, writer.uint32(178).fork()).join();
     }
     return writer;
   },
@@ -328,6 +334,14 @@ export const SensorOutput: MessageFns<SensorOutput> = {
           message.lidarOutput = LidarSensorOutput.decode(reader, reader.uint32());
           continue;
         }
+        case 22: {
+          if (tag !== 178) {
+            break;
+          }
+
+          message.energyOutput = EnergySensorOutput.decode(reader, reader.uint32());
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -370,6 +384,7 @@ export const SensorOutput: MessageFns<SensorOutput> = {
         ? GenericStringArray.fromJSON(object.genericStringArray)
         : undefined,
       lidarOutput: isSet(object.lidarOutput) ? LidarSensorOutput.fromJSON(object.lidarOutput) : undefined,
+      energyOutput: isSet(object.energyOutput) ? EnergySensorOutput.fromJSON(object.energyOutput) : undefined,
     };
   },
 
@@ -438,6 +453,9 @@ export const SensorOutput: MessageFns<SensorOutput> = {
     if (message.lidarOutput !== undefined) {
       obj.lidarOutput = LidarSensorOutput.toJSON(message.lidarOutput);
     }
+    if (message.energyOutput !== undefined) {
+      obj.energyOutput = EnergySensorOutput.toJSON(message.energyOutput);
+    }
     return obj;
   },
 
@@ -502,6 +520,9 @@ export const SensorOutput: MessageFns<SensorOutput> = {
       : undefined;
     message.lidarOutput = (object.lidarOutput !== undefined && object.lidarOutput !== null)
       ? LidarSensorOutput.fromPartial(object.lidarOutput)
+      : undefined;
+    message.energyOutput = (object.energyOutput !== undefined && object.energyOutput !== null)
+      ? EnergySensorOutput.fromPartial(object.energyOutput)
       : undefined;
     return message;
   },
