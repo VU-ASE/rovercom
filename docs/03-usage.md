@@ -1,6 +1,10 @@
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Usage
 
-## In Go
+<Tabs groupId="roverlib-flavor">
+  <TabItem value="roverlib-go" label="Go" default>
 
 Import one of the generated `pb_*` packages, which correspond to the message folder collections and prefix it:
 
@@ -29,7 +33,37 @@ msg := pb_outputs.SensorOutput{
 }
 ```
 
-## For C
+We recommend taking a look at the [service-template-go](https://github.com/VU-ASE/service-template-go) to understand how `rovercom` messages are used.
+
+  </TabItem>
+  <TabItem value="roverlib-python" label="Python">
+
+Import the generated proto file as follows:
+
+```python
+from . import rovercom
+```
+
+Then, instantiate an object like so:
+
+```python
+msg = rovercom.SensorOutput(
+    sensor_id=1,
+    timestamp=int(time.time() * 1000),
+    controller_output=rovercom.ControllerOutput(
+        steering_angle = steer_position,
+        left_throttle = tunable_speed,
+        right_throttle = tunable_speed,
+    )
+)
+```
+
+We recommend taking a look at the [service-template-python](https://github.com/VU-ASE/service-template-python) to understand how `rovercom` messages are used.
+
+
+
+  </TabItem>
+  <TabItem value="roverlib-c" label="C">
 
 Include the header files for the objects that you want to instantiate:
 
@@ -59,7 +93,11 @@ msg->controlleroutput = &controller_output;
 msg->sensor_output_case = PROTOBUF_MSGS__SENSOR_OUTPUT__SENSOR_OUTPUT_CONTROLLER_OUTPUT;
 ```
 
-## For TypeScirpt
+We recommend taking a look at the [service-template-c](https://github.com/VU-ASE/service-template-c) to understand how `rovercom` messages are used.
+
+  
+  </TabItem>
+  <TabItem value="roverlib-typescript" label="TypeScript">
 
 Import the objects that you want to instantiate:
 
@@ -88,3 +126,19 @@ const sensorOutput: SensorOutput = {
     controllerOutput: controllerOutput,
 }
 ```
+
+  </TabItem>
+
+  <TabItem value="other" label="Other">
+
+You will need to manually compile the given definitions using the `protoc` compiler and its plugins for your language of choice. We recommend taking a look at our [compilation targets](https://github.com/VU-ASE/rovercom/blob/main/Makefile) and [Devcontainer setup](https://github.com/VU-ASE/rovercom/blob/main/.devcontainer/Dockerfile) to understand which tools you need.
+
+</TabItem>
+
+</Tabs>
+
+
+
+
+
+
