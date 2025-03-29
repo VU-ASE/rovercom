@@ -13,6 +13,9 @@ import "outputs/battery.proto";
 import "outputs/rpm.proto";
 import "outputs/lux.proto";
 import "outputs/laptime.proto";
+import "outputs/generic.proto";
+import "outputs/lidar.proto";
+import "outputs/energy.proto";
 
 //
 // This file containes the wrapper SensorOutput message, that holds one of the sensor/controller output messages
@@ -41,6 +44,16 @@ message SensorOutput {
         RpmSensorOutput rpmOuput = 10;
         LuxSensorOutput luxOutput = 11;
         LapTimeOutput laptimeOutput = 12;
+        GenericIntScalar genericIntScalar = 13;
+        GenericFloatScalar genericFloatScalar = 14;
+        GenericBoolScalar genericBoolScalar = 15;
+        GenericStringScalar genericStringScalar = 16;
+        GenericIntArray genericIntArray = 17;
+        GenericFloatArray genericFloatArray = 18;
+        GenericBoolArray genericBoolArray = 19;
+        GenericStringArray genericStringArray = 20;
+        LidarSensorOutput lidarOutput = 21;
+        EnergySensorOutput energyOutput = 22;
     }
 }
 

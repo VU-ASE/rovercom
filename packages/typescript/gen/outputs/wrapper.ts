@@ -10,8 +10,20 @@ import { BatterySensorOutput } from "./battery";
 import { CameraSensorOutput } from "./camera";
 import { ControllerOutput } from "./controller";
 import { DistanceSensorOutput } from "./distance";
+import { EnergySensorOutput } from "./energy";
+import {
+  GenericBoolArray,
+  GenericBoolScalar,
+  GenericFloatArray,
+  GenericFloatScalar,
+  GenericIntArray,
+  GenericIntScalar,
+  GenericStringArray,
+  GenericStringScalar,
+} from "./generic";
 import { ImuSensorOutput } from "./imu";
 import { LapTimeOutput } from "./laptime";
+import { LidarSensorOutput } from "./lidar";
 import { LuxSensorOutput } from "./lux";
 import { RpmSensorOutput } from "./rpm";
 import { SpeedSensorOutput } from "./speed";
@@ -37,6 +49,16 @@ export interface SensorOutput {
   rpmOuput?: RpmSensorOutput | undefined;
   luxOutput?: LuxSensorOutput | undefined;
   laptimeOutput?: LapTimeOutput | undefined;
+  genericIntScalar?: GenericIntScalar | undefined;
+  genericFloatScalar?: GenericFloatScalar | undefined;
+  genericBoolScalar?: GenericBoolScalar | undefined;
+  genericStringScalar?: GenericStringScalar | undefined;
+  genericIntArray?: GenericIntArray | undefined;
+  genericFloatArray?: GenericFloatArray | undefined;
+  genericBoolArray?: GenericBoolArray | undefined;
+  genericStringArray?: GenericStringArray | undefined;
+  lidarOutput?: LidarSensorOutput | undefined;
+  energyOutput?: EnergySensorOutput | undefined;
 }
 
 function createBaseSensorOutput(): SensorOutput {
@@ -53,6 +75,16 @@ function createBaseSensorOutput(): SensorOutput {
     rpmOuput: undefined,
     luxOutput: undefined,
     laptimeOutput: undefined,
+    genericIntScalar: undefined,
+    genericFloatScalar: undefined,
+    genericBoolScalar: undefined,
+    genericStringScalar: undefined,
+    genericIntArray: undefined,
+    genericFloatArray: undefined,
+    genericBoolArray: undefined,
+    genericStringArray: undefined,
+    lidarOutput: undefined,
+    energyOutput: undefined,
   };
 }
 
@@ -93,6 +125,36 @@ export const SensorOutput: MessageFns<SensorOutput> = {
     }
     if (message.laptimeOutput !== undefined) {
       LapTimeOutput.encode(message.laptimeOutput, writer.uint32(98).fork()).join();
+    }
+    if (message.genericIntScalar !== undefined) {
+      GenericIntScalar.encode(message.genericIntScalar, writer.uint32(106).fork()).join();
+    }
+    if (message.genericFloatScalar !== undefined) {
+      GenericFloatScalar.encode(message.genericFloatScalar, writer.uint32(114).fork()).join();
+    }
+    if (message.genericBoolScalar !== undefined) {
+      GenericBoolScalar.encode(message.genericBoolScalar, writer.uint32(122).fork()).join();
+    }
+    if (message.genericStringScalar !== undefined) {
+      GenericStringScalar.encode(message.genericStringScalar, writer.uint32(130).fork()).join();
+    }
+    if (message.genericIntArray !== undefined) {
+      GenericIntArray.encode(message.genericIntArray, writer.uint32(138).fork()).join();
+    }
+    if (message.genericFloatArray !== undefined) {
+      GenericFloatArray.encode(message.genericFloatArray, writer.uint32(146).fork()).join();
+    }
+    if (message.genericBoolArray !== undefined) {
+      GenericBoolArray.encode(message.genericBoolArray, writer.uint32(154).fork()).join();
+    }
+    if (message.genericStringArray !== undefined) {
+      GenericStringArray.encode(message.genericStringArray, writer.uint32(162).fork()).join();
+    }
+    if (message.lidarOutput !== undefined) {
+      LidarSensorOutput.encode(message.lidarOutput, writer.uint32(170).fork()).join();
+    }
+    if (message.energyOutput !== undefined) {
+      EnergySensorOutput.encode(message.energyOutput, writer.uint32(178).fork()).join();
     }
     return writer;
   },
@@ -200,6 +262,86 @@ export const SensorOutput: MessageFns<SensorOutput> = {
           message.laptimeOutput = LapTimeOutput.decode(reader, reader.uint32());
           continue;
         }
+        case 13: {
+          if (tag !== 106) {
+            break;
+          }
+
+          message.genericIntScalar = GenericIntScalar.decode(reader, reader.uint32());
+          continue;
+        }
+        case 14: {
+          if (tag !== 114) {
+            break;
+          }
+
+          message.genericFloatScalar = GenericFloatScalar.decode(reader, reader.uint32());
+          continue;
+        }
+        case 15: {
+          if (tag !== 122) {
+            break;
+          }
+
+          message.genericBoolScalar = GenericBoolScalar.decode(reader, reader.uint32());
+          continue;
+        }
+        case 16: {
+          if (tag !== 130) {
+            break;
+          }
+
+          message.genericStringScalar = GenericStringScalar.decode(reader, reader.uint32());
+          continue;
+        }
+        case 17: {
+          if (tag !== 138) {
+            break;
+          }
+
+          message.genericIntArray = GenericIntArray.decode(reader, reader.uint32());
+          continue;
+        }
+        case 18: {
+          if (tag !== 146) {
+            break;
+          }
+
+          message.genericFloatArray = GenericFloatArray.decode(reader, reader.uint32());
+          continue;
+        }
+        case 19: {
+          if (tag !== 154) {
+            break;
+          }
+
+          message.genericBoolArray = GenericBoolArray.decode(reader, reader.uint32());
+          continue;
+        }
+        case 20: {
+          if (tag !== 162) {
+            break;
+          }
+
+          message.genericStringArray = GenericStringArray.decode(reader, reader.uint32());
+          continue;
+        }
+        case 21: {
+          if (tag !== 170) {
+            break;
+          }
+
+          message.lidarOutput = LidarSensorOutput.decode(reader, reader.uint32());
+          continue;
+        }
+        case 22: {
+          if (tag !== 178) {
+            break;
+          }
+
+          message.energyOutput = EnergySensorOutput.decode(reader, reader.uint32());
+          continue;
+        }
       }
       if ((tag & 7) === 4 || tag === 0) {
         break;
@@ -223,6 +365,26 @@ export const SensorOutput: MessageFns<SensorOutput> = {
       rpmOuput: isSet(object.rpmOuput) ? RpmSensorOutput.fromJSON(object.rpmOuput) : undefined,
       luxOutput: isSet(object.luxOutput) ? LuxSensorOutput.fromJSON(object.luxOutput) : undefined,
       laptimeOutput: isSet(object.laptimeOutput) ? LapTimeOutput.fromJSON(object.laptimeOutput) : undefined,
+      genericIntScalar: isSet(object.genericIntScalar) ? GenericIntScalar.fromJSON(object.genericIntScalar) : undefined,
+      genericFloatScalar: isSet(object.genericFloatScalar)
+        ? GenericFloatScalar.fromJSON(object.genericFloatScalar)
+        : undefined,
+      genericBoolScalar: isSet(object.genericBoolScalar)
+        ? GenericBoolScalar.fromJSON(object.genericBoolScalar)
+        : undefined,
+      genericStringScalar: isSet(object.genericStringScalar)
+        ? GenericStringScalar.fromJSON(object.genericStringScalar)
+        : undefined,
+      genericIntArray: isSet(object.genericIntArray) ? GenericIntArray.fromJSON(object.genericIntArray) : undefined,
+      genericFloatArray: isSet(object.genericFloatArray)
+        ? GenericFloatArray.fromJSON(object.genericFloatArray)
+        : undefined,
+      genericBoolArray: isSet(object.genericBoolArray) ? GenericBoolArray.fromJSON(object.genericBoolArray) : undefined,
+      genericStringArray: isSet(object.genericStringArray)
+        ? GenericStringArray.fromJSON(object.genericStringArray)
+        : undefined,
+      lidarOutput: isSet(object.lidarOutput) ? LidarSensorOutput.fromJSON(object.lidarOutput) : undefined,
+      energyOutput: isSet(object.energyOutput) ? EnergySensorOutput.fromJSON(object.energyOutput) : undefined,
     };
   },
 
@@ -264,6 +426,36 @@ export const SensorOutput: MessageFns<SensorOutput> = {
     if (message.laptimeOutput !== undefined) {
       obj.laptimeOutput = LapTimeOutput.toJSON(message.laptimeOutput);
     }
+    if (message.genericIntScalar !== undefined) {
+      obj.genericIntScalar = GenericIntScalar.toJSON(message.genericIntScalar);
+    }
+    if (message.genericFloatScalar !== undefined) {
+      obj.genericFloatScalar = GenericFloatScalar.toJSON(message.genericFloatScalar);
+    }
+    if (message.genericBoolScalar !== undefined) {
+      obj.genericBoolScalar = GenericBoolScalar.toJSON(message.genericBoolScalar);
+    }
+    if (message.genericStringScalar !== undefined) {
+      obj.genericStringScalar = GenericStringScalar.toJSON(message.genericStringScalar);
+    }
+    if (message.genericIntArray !== undefined) {
+      obj.genericIntArray = GenericIntArray.toJSON(message.genericIntArray);
+    }
+    if (message.genericFloatArray !== undefined) {
+      obj.genericFloatArray = GenericFloatArray.toJSON(message.genericFloatArray);
+    }
+    if (message.genericBoolArray !== undefined) {
+      obj.genericBoolArray = GenericBoolArray.toJSON(message.genericBoolArray);
+    }
+    if (message.genericStringArray !== undefined) {
+      obj.genericStringArray = GenericStringArray.toJSON(message.genericStringArray);
+    }
+    if (message.lidarOutput !== undefined) {
+      obj.lidarOutput = LidarSensorOutput.toJSON(message.lidarOutput);
+    }
+    if (message.energyOutput !== undefined) {
+      obj.energyOutput = EnergySensorOutput.toJSON(message.energyOutput);
+    }
     return obj;
   },
 
@@ -301,6 +493,36 @@ export const SensorOutput: MessageFns<SensorOutput> = {
       : undefined;
     message.laptimeOutput = (object.laptimeOutput !== undefined && object.laptimeOutput !== null)
       ? LapTimeOutput.fromPartial(object.laptimeOutput)
+      : undefined;
+    message.genericIntScalar = (object.genericIntScalar !== undefined && object.genericIntScalar !== null)
+      ? GenericIntScalar.fromPartial(object.genericIntScalar)
+      : undefined;
+    message.genericFloatScalar = (object.genericFloatScalar !== undefined && object.genericFloatScalar !== null)
+      ? GenericFloatScalar.fromPartial(object.genericFloatScalar)
+      : undefined;
+    message.genericBoolScalar = (object.genericBoolScalar !== undefined && object.genericBoolScalar !== null)
+      ? GenericBoolScalar.fromPartial(object.genericBoolScalar)
+      : undefined;
+    message.genericStringScalar = (object.genericStringScalar !== undefined && object.genericStringScalar !== null)
+      ? GenericStringScalar.fromPartial(object.genericStringScalar)
+      : undefined;
+    message.genericIntArray = (object.genericIntArray !== undefined && object.genericIntArray !== null)
+      ? GenericIntArray.fromPartial(object.genericIntArray)
+      : undefined;
+    message.genericFloatArray = (object.genericFloatArray !== undefined && object.genericFloatArray !== null)
+      ? GenericFloatArray.fromPartial(object.genericFloatArray)
+      : undefined;
+    message.genericBoolArray = (object.genericBoolArray !== undefined && object.genericBoolArray !== null)
+      ? GenericBoolArray.fromPartial(object.genericBoolArray)
+      : undefined;
+    message.genericStringArray = (object.genericStringArray !== undefined && object.genericStringArray !== null)
+      ? GenericStringArray.fromPartial(object.genericStringArray)
+      : undefined;
+    message.lidarOutput = (object.lidarOutput !== undefined && object.lidarOutput !== null)
+      ? LidarSensorOutput.fromPartial(object.lidarOutput)
+      : undefined;
+    message.energyOutput = (object.energyOutput !== undefined && object.energyOutput !== null)
+      ? EnergySensorOutput.fromPartial(object.energyOutput)
       : undefined;
     return message;
   },
