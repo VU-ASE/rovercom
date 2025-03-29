@@ -9,16 +9,18 @@ option go_package = "ase/pb_outputs";
 //
 
 message LidarSensorOutput {
+    // A scan corresponds to a single shot of the laser. One rotation contains many scans.
     message Scan {
         // angle in degrees
         float angle = 1;
         // distance in meters
         float distance = 2; 
-        // quality of the scan
+        // quality of the scan (0 is worst, 255 is best)
         uint32 quality = 3; 
-        // true if this is the start of a new scan
+        // true if this is the start of a new scan rotation
         bool isStart = 4;
     }
-     // array of scans
+
+    // Many (but not necessarily all) scans in a single rotation
     repeated Scan scans = 1;
 }
