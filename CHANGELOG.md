@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.7.0](https://github.com/VU-ASE/rovercom/compare/v1.6.0...v1.7.0) (2025-03-29)
+
+
+### Features
+
+* add generic output message and enable it in wrapper ([49c8db8](https://github.com/VU-ASE/rovercom/commit/49c8db8a5290411bb47b5f186ebc9057a9816b7f))
+* add lidar output message and enable it in wrapper ([f631e9f](https://github.com/VU-ASE/rovercom/commit/f631e9f0ec395d5b8e4400b299e57dd4b587e3ac))
+* added generic, energy, and lidar ([833ae0e](https://github.com/VU-ASE/rovercom/commit/833ae0ebb92b087da994601fa6098db1f782b38d))
+* wip current sensor and LiDAR ([80b53c1](https://github.com/VU-ASE/rovercom/commit/80b53c1ba3452864c56504cc6d7576b4dd33e462))
+
 ## [1.6.0](https://github.com/VU-ASE/rovercom/compare/v1.5.1...v1.6.0) (2025-01-04)
 
 
