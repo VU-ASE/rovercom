@@ -9,5 +9,16 @@ option go_package = "ase/pb_outputs";
 //
 
 message LidarSensorOutput {
-    // todo
+    message Scan {
+        // angle in degrees
+        float angle = 1;
+        // distance in meters
+        float distance = 2; 
+        // quality of the scan
+        uint32 quality = 3; 
+        // true if this is the start of a new scan
+        bool isStart = 4;
+    }
+     // array of scans
+    repeated Scan scans = 1;
 }

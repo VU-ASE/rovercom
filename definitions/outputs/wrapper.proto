@@ -14,6 +14,7 @@ import "outputs/rpm.proto";
 import "outputs/lux.proto";
 import "outputs/laptime.proto";
 import "outputs/generic.proto";
+import "outputs/lidar.proto";
 
 //
 // This file containes the wrapper SensorOutput message, that holds one of the sensor/controller output messages
@@ -50,6 +51,7 @@ message SensorOutput {
         GenericFloatArray genericFloatArray = 18;
         GenericBoolArray genericBoolArray = 19;
         GenericStringArray genericStringArray = 20;
+        LidarSensorOutput lidarOutput = 21;
     }
 }
 
