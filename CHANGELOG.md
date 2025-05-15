@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.8.0](https://github.com/VU-ASE/rovercom/compare/v1.7.0...v1.8.0) (2025-05-15)
+
+
+### Features
+
+* rovercom for c# ([8435819](https://github.com/VU-ASE/rovercom/commit/84358192fce2aa0a789b4a9798446bdcb8e4e1ab))
+
 ## [1.7.0](https://github.com/VU-ASE/rovercom/compare/v1.6.0...v1.7.0) (2025-03-29)
 
 
