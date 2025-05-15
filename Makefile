@@ -40,6 +40,13 @@ package-python-build: package-c-clean
 	@mkdir -p ./packages/python/gen
 	@protoc --python_betterproto_out=./packages/python/gen $(INPUTS)
 
-clean: package-go-clean package-ts-clean package-c-clean package-python-clean
+package-csharp-clean:
+	rm -rf ./packages/csharp/gen
 
-build: package-go-build package-ts-build package-c-build package-python-build
+package-csharp-build: package-csharp-clean
+	@mkdir -p ./packages/csharp/gen
+	@protoc --csharp_out=./packages/csharp/gen $(INPUTS)
+
+clean: package-go-clean package-ts-clean package-c-clean package-python-clean package-csharp-clean
+
+build: package-go-build package-ts-build package-c-build package-python-build package-csharp-build
