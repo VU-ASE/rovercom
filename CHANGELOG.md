@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/VU-ASE/rovercom/compare/v2.0.0...v2.0.1) (2025-07-31)
+
+
+### Bug Fixes
+
+* go installation guide v2 reference ([5ab2dac](https://github.com/VU-ASE/rovercom/commit/5ab2dacb2d3a121178b444f5e06a115830a76f2e))
+
 ## [2.0.0](https://github.com/VU-ASE/rovercom/compare/v1.7.0...v2.0.0) (2025-07-31)
 
 
