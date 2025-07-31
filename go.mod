@@ -1,4 +1,4 @@
-module github.com/VU-ASE/rovercom
+module github.com/VU-ASE/rovercom/v2
 
 go 1.21.6
 

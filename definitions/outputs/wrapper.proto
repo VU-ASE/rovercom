@@ -41,9 +41,8 @@ message SensorOutput {
         ControllerOutput controllerOutput = 7;
         ImuSensorOutput imuOutput = 8;
         BatterySensorOutput batteryOutput = 9;
-        RpmSensorOutput rpmOuput = 10;
+        RpmSensorOutput rpmOutput = 10;
         LuxSensorOutput luxOutput = 11;
-        LapTimeOutput laptimeOutput = 12;
         GenericIntScalar genericIntScalar = 13;
         GenericFloatScalar genericFloatScalar = 14;
         GenericBoolScalar genericBoolScalar = 15;

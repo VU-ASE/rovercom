@@ -5,13 +5,21 @@ package protobuf_msgs;
 option go_package = "ase/pb_outputs";
 
 //
-// Messages that can be output by the pwm-reader that 
-// is connected to the RPM sensors of the motors.
+// This is the message format that a RPM sensor service can send out. It is deliberately left with many details, to allow 
+// for different use cases.
 //
-
 message RpmSensorOutput {
-    float leftRpm = 1;
-    float leftAngle = 2;
-    float rightRpm = 3;
-    float rightAngle = 4;
+    MotorInformation leftMotor = 1; 
+    MotorInformation rightMotor = 2; 
+}
+
+message MotorInformation {
+    // This is probably all the information you need to understand how the motor behaves
+    float rpm = 1; // RPM
+    float speed = 2; // Speed in m/s, as computed from the RPM
+
+    // More fine-grained details to (re)compute the RPM and speed or other parameters you are interested in
+    uint32 ticks = 3; // Number of ticks since the last timer reset
+    uint32 timeoutCount = 4; // Number of timeouts since the last timer reset, if this is greater than 0, the motor is not spinning
+    uint32 sequenceNumber = 5; // Sequence number of the message, can be used to detect if the message is stale
 }

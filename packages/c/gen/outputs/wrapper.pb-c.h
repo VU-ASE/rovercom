@@ -43,9 +43,8 @@ typedef enum {
   PROTOBUF_MSGS__SENSOR_OUTPUT__SENSOR_OUTPUT_CONTROLLER_OUTPUT = 7,
   PROTOBUF_MSGS__SENSOR_OUTPUT__SENSOR_OUTPUT_IMU_OUTPUT = 8,
   PROTOBUF_MSGS__SENSOR_OUTPUT__SENSOR_OUTPUT_BATTERY_OUTPUT = 9,
-  PROTOBUF_MSGS__SENSOR_OUTPUT__SENSOR_OUTPUT_RPM_OUPUT = 10,
+  PROTOBUF_MSGS__SENSOR_OUTPUT__SENSOR_OUTPUT_RPM_OUTPUT = 10,
   PROTOBUF_MSGS__SENSOR_OUTPUT__SENSOR_OUTPUT_LUX_OUTPUT = 11,
-  PROTOBUF_MSGS__SENSOR_OUTPUT__SENSOR_OUTPUT_LAPTIME_OUTPUT = 12,
   PROTOBUF_MSGS__SENSOR_OUTPUT__SENSOR_OUTPUT_GENERIC_INT_SCALAR = 13,
   PROTOBUF_MSGS__SENSOR_OUTPUT__SENSOR_OUTPUT_GENERIC_FLOAT_SCALAR = 14,
   PROTOBUF_MSGS__SENSOR_OUTPUT__SENSOR_OUTPUT_GENERIC_BOOL_SCALAR = 15,
@@ -83,9 +82,8 @@ struct  _ProtobufMsgs__SensorOutput
     ProtobufMsgs__ControllerOutput *controlleroutput;
     ProtobufMsgs__ImuSensorOutput *imuoutput;
     ProtobufMsgs__BatterySensorOutput *batteryoutput;
-    ProtobufMsgs__RpmSensorOutput *rpmouput;
+    ProtobufMsgs__RpmSensorOutput *rpmoutput;
     ProtobufMsgs__LuxSensorOutput *luxoutput;
-    ProtobufMsgs__LapTimeOutput *laptimeoutput;
     ProtobufMsgs__GenericIntScalar *genericintscalar;
     ProtobufMsgs__GenericFloatScalar *genericfloatscalar;
     ProtobufMsgs__GenericBoolScalar *genericboolscalar;

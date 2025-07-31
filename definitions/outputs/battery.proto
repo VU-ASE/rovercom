@@ -5,11 +5,10 @@ package protobuf_msgs;
 option go_package = "ase/pb_outputs";
 
 //
-// Messages that can be outputted by a battery sensor module
+// This is the message format that a battery service can send out. It contains information about the battery's current state.
 //
-
 message BatterySensorOutput {
-    float currentOutputVoltage = 1;
-    float warnVoltage = 2;
-    float killVoltage = 3;
+    float currentOutputVoltage = 1; // The current voltage of the battery in volts
+    float warnVoltage = 2; // The voltage at which the framework will warn the user about low battery
+    float killVoltage = 3; // The voltage at which the framework will shut down the debix to prevent undercharge
 }

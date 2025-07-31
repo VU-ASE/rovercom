@@ -21,12 +21,12 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// This is the message format that a RPM sensor service can send out. It is deliberately left with many details, to allow
+// for different use cases.
 type RpmSensorOutput struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	LeftRpm       float32                `protobuf:"fixed32,1,opt,name=leftRpm,proto3" json:"leftRpm,omitempty"`
-	LeftAngle     float32                `protobuf:"fixed32,2,opt,name=leftAngle,proto3" json:"leftAngle,omitempty"`
-	RightRpm      float32                `protobuf:"fixed32,3,opt,name=rightRpm,proto3" json:"rightRpm,omitempty"`
-	RightAngle    float32                `protobuf:"fixed32,4,opt,name=rightAngle,proto3" json:"rightAngle,omitempty"`
+	LeftMotor     *MotorInformation      `protobuf:"bytes,1,opt,name=leftMotor,proto3" json:"leftMotor,omitempty"`
+	RightMotor    *MotorInformation      `protobuf:"bytes,2,opt,name=rightMotor,proto3" json:"rightMotor,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -61,30 +61,94 @@ func (*RpmSensorOutput) Descriptor() ([]byte, []int) {
 	return file_outputs_rpm_proto_rawDescGZIP(), []int{0}
 }
 
-func (x *RpmSensorOutput) GetLeftRpm() float32 {
+func (x *RpmSensorOutput) GetLeftMotor() *MotorInformation {
 	if x != nil {
-		return x.LeftRpm
+		return x.LeftMotor
+	}
+	return nil
+}
+
+func (x *RpmSensorOutput) GetRightMotor() *MotorInformation {
+	if x != nil {
+		return x.RightMotor
+	}
+	return nil
+}
+
+type MotorInformation struct {
+	state protoimpl.MessageState `protogen:"open.v1"`
+	// This is probably all the information you need to understand how the motor behaves
+	Rpm   float32 `protobuf:"fixed32,1,opt,name=rpm,proto3" json:"rpm,omitempty"`     // RPM
+	Speed float32 `protobuf:"fixed32,2,opt,name=speed,proto3" json:"speed,omitempty"` // Speed in m/s, as computed from the RPM
+	// More fine-grained details to (re)compute the RPM and speed or other parameters you are interested in
+	Ticks          uint32 `protobuf:"varint,3,opt,name=ticks,proto3" json:"ticks,omitempty"`                   // Number of ticks since the last timer reset
+	TimeoutCount   uint32 `protobuf:"varint,4,opt,name=timeoutCount,proto3" json:"timeoutCount,omitempty"`     // Number of timeouts since the last timer reset, if this is greater than 0, the motor is not spinning
+	SequenceNumber uint32 `protobuf:"varint,5,opt,name=sequenceNumber,proto3" json:"sequenceNumber,omitempty"` // Sequence number of the message, can be used to detect if the message is stale
+	unknownFields  protoimpl.UnknownFields
+	sizeCache      protoimpl.SizeCache
+}
+
+func (x *MotorInformation) Reset() {
+	*x = MotorInformation{}
+	mi := &file_outputs_rpm_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *MotorInformation) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*MotorInformation) ProtoMessage() {}
+
+func (x *MotorInformation) ProtoReflect() protoreflect.Message {
+	mi := &file_outputs_rpm_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use MotorInformation.ProtoReflect.Descriptor instead.
+func (*MotorInformation) Descriptor() ([]byte, []int) {
+	return file_outputs_rpm_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *MotorInformation) GetRpm() float32 {
+	if x != nil {
+		return x.Rpm
 	}
 	return 0
 }
 
-func (x *RpmSensorOutput) GetLeftAngle() float32 {
+func (x *MotorInformation) GetSpeed() float32 {
 	if x != nil {
-		return x.LeftAngle
+		return x.Speed
 	}
 	return 0
 }
 
-func (x *RpmSensorOutput) GetRightRpm() float32 {
+func (x *MotorInformation) GetTicks() uint32 {
 	if x != nil {
-		return x.RightRpm
+		return x.Ticks
 	}
 	return 0
 }
 
-func (x *RpmSensorOutput) GetRightAngle() float32 {
+func (x *MotorInformation) GetTimeoutCount() uint32 {
 	if x != nil {
-		return x.RightAngle
+		return x.TimeoutCount
+	}
+	return 0
+}
+
+func (x *MotorInformation) GetSequenceNumber() uint32 {
+	if x != nil {
+		return x.SequenceNumber
 	}
 	return 0
 }
@@ -93,14 +157,18 @@ var File_outputs_rpm_proto protoreflect.FileDescriptor
 
 const file_outputs_rpm_proto_rawDesc = "" +
 	"\n" +
-	"\x11outputs/rpm.proto\x12\rprotobuf_msgs\"\x85\x01\n" +
-	"\x0fRpmSensorOutput\x12\x18\n" +
-	"\aleftRpm\x18\x01 \x01(\x02R\aleftRpm\x12\x1c\n" +
-	"\tleftAngle\x18\x02 \x01(\x02R\tleftAngle\x12\x1a\n" +
-	"\brightRpm\x18\x03 \x01(\x02R\brightRpm\x12\x1e\n" +
+	"\x11outputs/rpm.proto\x12\rprotobuf_msgs\"\x91\x01\n" +
+	"\x0fRpmSensorOutput\x12=\n" +
+	"\tleftMotor\x18\x01 \x01(\v2\x1f.protobuf_msgs.MotorInformationR\tleftMotor\x12?\n" +
 	"\n" +
-	"rightAngle\x18\x04 \x01(\x02R\n" +
-	"rightAngleB\x10Z\x0ease/pb_outputsb\x06proto3"
+	"rightMotor\x18\x02 \x01(\v2\x1f.protobuf_msgs.MotorInformationR\n" +
+	"rightMotor\"\x9c\x01\n" +
+	"\x10MotorInformation\x12\x10\n" +
+	"\x03rpm\x18\x01 \x01(\x02R\x03rpm\x12\x14\n" +
+	"\x05speed\x18\x02 \x01(\x02R\x05speed\x12\x14\n" +
+	"\x05ticks\x18\x03 \x01(\rR\x05ticks\x12\"\n" +
+	"\ftimeoutCount\x18\x04 \x01(\rR\ftimeoutCount\x12&\n" +
+	"\x0esequenceNumber\x18\x05 \x01(\rR\x0esequenceNumberB\x10Z\x0ease/pb_outputsb\x06proto3"
 
 var (
 	file_outputs_rpm_proto_rawDescOnce sync.Once
@@ -114,16 +182,19 @@ func file_outputs_rpm_proto_rawDescGZIP() []byte {
 	return file_outputs_rpm_proto_rawDescData
 }
 
-var file_outputs_rpm_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_outputs_rpm_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
 var file_outputs_rpm_proto_goTypes = []any{
-	(*RpmSensorOutput)(nil), // 0: protobuf_msgs.RpmSensorOutput
+	(*RpmSensorOutput)(nil),  // 0: protobuf_msgs.RpmSensorOutput
+	(*MotorInformation)(nil), // 1: protobuf_msgs.MotorInformation
 }
 var file_outputs_rpm_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
-	0, // [0:0] is the sub-list for extension type_name
-	0, // [0:0] is the sub-list for extension extendee
-	0, // [0:0] is the sub-list for field type_name
+	1, // 0: protobuf_msgs.RpmSensorOutput.leftMotor:type_name -> protobuf_msgs.MotorInformation
+	1, // 1: protobuf_msgs.RpmSensorOutput.rightMotor:type_name -> protobuf_msgs.MotorInformation
+	2, // [2:2] is the sub-list for method output_type
+	2, // [2:2] is the sub-list for method input_type
+	2, // [2:2] is the sub-list for extension type_name
+	2, // [2:2] is the sub-list for extension extendee
+	0, // [0:2] is the sub-list for field type_name
 }
 
 func init() { file_outputs_rpm_proto_init() }
@@ -137,7 +208,7 @@ func file_outputs_rpm_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_outputs_rpm_proto_rawDesc), len(file_outputs_rpm_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   1,
+			NumMessages:   2,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
