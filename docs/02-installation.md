@@ -12,8 +12,10 @@ You can install `rovercom` as a Go package for your Go module as follows:
 
 ```bash
 # Install latest version
-go get github.com/VU-ASE/rovercom
+go get github.com/VU-ASE/rovercom/v2
 # Install a specific version
+go get github.com/VU-ASE/rovercom/v2@v2.0.0
+# LEGACY: Install a v1 version
 go get github.com/VU-ASE/rovercom@v1.5.1
 ```
 
