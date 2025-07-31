@@ -40,9 +40,8 @@ type SensorOutput struct {
 	//	*SensorOutput_ControllerOutput
 	//	*SensorOutput_ImuOutput
 	//	*SensorOutput_BatteryOutput
-	//	*SensorOutput_RpmOuput
+	//	*SensorOutput_RpmOutput
 	//	*SensorOutput_LuxOutput
-	//	*SensorOutput_LaptimeOutput
 	//	*SensorOutput_GenericIntScalar
 	//	*SensorOutput_GenericFloatScalar
 	//	*SensorOutput_GenericBoolScalar
@@ -170,10 +169,10 @@ func (x *SensorOutput) GetBatteryOutput() *BatterySensorOutput {
 	return nil
 }
 
-func (x *SensorOutput) GetRpmOuput() *RpmSensorOutput {
+func (x *SensorOutput) GetRpmOutput() *RpmSensorOutput {
 	if x != nil {
-		if x, ok := x.SensorOutput.(*SensorOutput_RpmOuput); ok {
-			return x.RpmOuput
+		if x, ok := x.SensorOutput.(*SensorOutput_RpmOutput); ok {
+			return x.RpmOutput
 		}
 	}
 	return nil
@@ -183,15 +182,6 @@ func (x *SensorOutput) GetLuxOutput() *LuxSensorOutput {
 	if x != nil {
 		if x, ok := x.SensorOutput.(*SensorOutput_LuxOutput); ok {
 			return x.LuxOutput
-		}
-	}
-	return nil
-}
-
-func (x *SensorOutput) GetLaptimeOutput() *LapTimeOutput {
-	if x != nil {
-		if x, ok := x.SensorOutput.(*SensorOutput_LaptimeOutput); ok {
-			return x.LaptimeOutput
 		}
 	}
 	return nil
@@ -315,16 +305,12 @@ type SensorOutput_BatteryOutput struct {
 	BatteryOutput *BatterySensorOutput `protobuf:"bytes,9,opt,name=batteryOutput,proto3,oneof"`
 }
 
-type SensorOutput_RpmOuput struct {
-	RpmOuput *RpmSensorOutput `protobuf:"bytes,10,opt,name=rpmOuput,proto3,oneof"`
+type SensorOutput_RpmOutput struct {
+	RpmOutput *RpmSensorOutput `protobuf:"bytes,10,opt,name=rpmOutput,proto3,oneof"`
 }
 
 type SensorOutput_LuxOutput struct {
 	LuxOutput *LuxSensorOutput `protobuf:"bytes,11,opt,name=luxOutput,proto3,oneof"`
-}
-
-type SensorOutput_LaptimeOutput struct {
-	LaptimeOutput *LapTimeOutput `protobuf:"bytes,12,opt,name=laptimeOutput,proto3,oneof"`
 }
 
 type SensorOutput_GenericIntScalar struct {
@@ -379,11 +365,9 @@ func (*SensorOutput_ImuOutput) isSensorOutput_SensorOutput() {}
 
 func (*SensorOutput_BatteryOutput) isSensorOutput_SensorOutput() {}
 
-func (*SensorOutput_RpmOuput) isSensorOutput_SensorOutput() {}
+func (*SensorOutput_RpmOutput) isSensorOutput_SensorOutput() {}
 
 func (*SensorOutput_LuxOutput) isSensorOutput_SensorOutput() {}
-
-func (*SensorOutput_LaptimeOutput) isSensorOutput_SensorOutput() {}
 
 func (*SensorOutput_GenericIntScalar) isSensorOutput_SensorOutput() {}
 
@@ -409,7 +393,7 @@ var File_outputs_wrapper_proto protoreflect.FileDescriptor
 
 const file_outputs_wrapper_proto_rawDesc = "" +
 	"\n" +
-	"\x15outputs/wrapper.proto\x12\rprotobuf_msgs\x1a\x14outputs/camera.proto\x1a\x16outputs/distance.proto\x1a\x13outputs/speed.proto\x1a\x18outputs/controller.proto\x1a\x11outputs/imu.proto\x1a\x15outputs/battery.proto\x1a\x11outputs/rpm.proto\x1a\x11outputs/lux.proto\x1a\x15outputs/laptime.proto\x1a\x15outputs/generic.proto\x1a\x13outputs/lidar.proto\x1a\x14outputs/energy.proto\"\x8c\f\n" +
+	"\x15outputs/wrapper.proto\x12\rprotobuf_msgs\x1a\x14outputs/camera.proto\x1a\x16outputs/distance.proto\x1a\x13outputs/speed.proto\x1a\x18outputs/controller.proto\x1a\x11outputs/imu.proto\x1a\x15outputs/battery.proto\x1a\x11outputs/rpm.proto\x1a\x11outputs/lux.proto\x1a\x15outputs/laptime.proto\x1a\x15outputs/generic.proto\x1a\x13outputs/lidar.proto\x1a\x14outputs/energy.proto\"\xc8\v\n" +
 	"\fSensorOutput\x12\x1a\n" +
 	"\bsensorId\x18\x01 \x01(\rR\bsensorId\x12\x1c\n" +
 	"\ttimestamp\x18\x02 \x01(\x04R\ttimestamp\x12\x16\n" +
@@ -419,11 +403,10 @@ const file_outputs_wrapper_proto_rawDesc = "" +
 	"\vspeedOutput\x18\x06 \x01(\v2 .protobuf_msgs.SpeedSensorOutputH\x00R\vspeedOutput\x12M\n" +
 	"\x10controllerOutput\x18\a \x01(\v2\x1f.protobuf_msgs.ControllerOutputH\x00R\x10controllerOutput\x12>\n" +
 	"\timuOutput\x18\b \x01(\v2\x1e.protobuf_msgs.ImuSensorOutputH\x00R\timuOutput\x12J\n" +
-	"\rbatteryOutput\x18\t \x01(\v2\".protobuf_msgs.BatterySensorOutputH\x00R\rbatteryOutput\x12<\n" +
-	"\brpmOuput\x18\n" +
-	" \x01(\v2\x1e.protobuf_msgs.RpmSensorOutputH\x00R\brpmOuput\x12>\n" +
-	"\tluxOutput\x18\v \x01(\v2\x1e.protobuf_msgs.LuxSensorOutputH\x00R\tluxOutput\x12D\n" +
-	"\rlaptimeOutput\x18\f \x01(\v2\x1c.protobuf_msgs.LapTimeOutputH\x00R\rlaptimeOutput\x12M\n" +
+	"\rbatteryOutput\x18\t \x01(\v2\".protobuf_msgs.BatterySensorOutputH\x00R\rbatteryOutput\x12>\n" +
+	"\trpmOutput\x18\n" +
+	" \x01(\v2\x1e.protobuf_msgs.RpmSensorOutputH\x00R\trpmOutput\x12>\n" +
+	"\tluxOutput\x18\v \x01(\v2\x1e.protobuf_msgs.LuxSensorOutputH\x00R\tluxOutput\x12M\n" +
 	"\x10genericIntScalar\x18\r \x01(\v2\x1f.protobuf_msgs.GenericIntScalarH\x00R\x10genericIntScalar\x12S\n" +
 	"\x12genericFloatScalar\x18\x0e \x01(\v2!.protobuf_msgs.GenericFloatScalarH\x00R\x12genericFloatScalar\x12P\n" +
 	"\x11genericBoolScalar\x18\x0f \x01(\v2 .protobuf_msgs.GenericBoolScalarH\x00R\x11genericBoolScalar\x12V\n" +
@@ -459,17 +442,16 @@ var file_outputs_wrapper_proto_goTypes = []any{
 	(*BatterySensorOutput)(nil),  // 6: protobuf_msgs.BatterySensorOutput
 	(*RpmSensorOutput)(nil),      // 7: protobuf_msgs.RpmSensorOutput
 	(*LuxSensorOutput)(nil),      // 8: protobuf_msgs.LuxSensorOutput
-	(*LapTimeOutput)(nil),        // 9: protobuf_msgs.LapTimeOutput
-	(*GenericIntScalar)(nil),     // 10: protobuf_msgs.GenericIntScalar
-	(*GenericFloatScalar)(nil),   // 11: protobuf_msgs.GenericFloatScalar
-	(*GenericBoolScalar)(nil),    // 12: protobuf_msgs.GenericBoolScalar
-	(*GenericStringScalar)(nil),  // 13: protobuf_msgs.GenericStringScalar
-	(*GenericIntArray)(nil),      // 14: protobuf_msgs.GenericIntArray
-	(*GenericFloatArray)(nil),    // 15: protobuf_msgs.GenericFloatArray
-	(*GenericBoolArray)(nil),     // 16: protobuf_msgs.GenericBoolArray
-	(*GenericStringArray)(nil),   // 17: protobuf_msgs.GenericStringArray
-	(*LidarSensorOutput)(nil),    // 18: protobuf_msgs.LidarSensorOutput
-	(*EnergySensorOutput)(nil),   // 19: protobuf_msgs.EnergySensorOutput
+	(*GenericIntScalar)(nil),     // 9: protobuf_msgs.GenericIntScalar
+	(*GenericFloatScalar)(nil),   // 10: protobuf_msgs.GenericFloatScalar
+	(*GenericBoolScalar)(nil),    // 11: protobuf_msgs.GenericBoolScalar
+	(*GenericStringScalar)(nil),  // 12: protobuf_msgs.GenericStringScalar
+	(*GenericIntArray)(nil),      // 13: protobuf_msgs.GenericIntArray
+	(*GenericFloatArray)(nil),    // 14: protobuf_msgs.GenericFloatArray
+	(*GenericBoolArray)(nil),     // 15: protobuf_msgs.GenericBoolArray
+	(*GenericStringArray)(nil),   // 16: protobuf_msgs.GenericStringArray
+	(*LidarSensorOutput)(nil),    // 17: protobuf_msgs.LidarSensorOutput
+	(*EnergySensorOutput)(nil),   // 18: protobuf_msgs.EnergySensorOutput
 }
 var file_outputs_wrapper_proto_depIdxs = []int32{
 	1,  // 0: protobuf_msgs.SensorOutput.cameraOutput:type_name -> protobuf_msgs.CameraSensorOutput
@@ -478,24 +460,23 @@ var file_outputs_wrapper_proto_depIdxs = []int32{
 	4,  // 3: protobuf_msgs.SensorOutput.controllerOutput:type_name -> protobuf_msgs.ControllerOutput
 	5,  // 4: protobuf_msgs.SensorOutput.imuOutput:type_name -> protobuf_msgs.ImuSensorOutput
 	6,  // 5: protobuf_msgs.SensorOutput.batteryOutput:type_name -> protobuf_msgs.BatterySensorOutput
-	7,  // 6: protobuf_msgs.SensorOutput.rpmOuput:type_name -> protobuf_msgs.RpmSensorOutput
+	7,  // 6: protobuf_msgs.SensorOutput.rpmOutput:type_name -> protobuf_msgs.RpmSensorOutput
 	8,  // 7: protobuf_msgs.SensorOutput.luxOutput:type_name -> protobuf_msgs.LuxSensorOutput
-	9,  // 8: protobuf_msgs.SensorOutput.laptimeOutput:type_name -> protobuf_msgs.LapTimeOutput
-	10, // 9: protobuf_msgs.SensorOutput.genericIntScalar:type_name -> protobuf_msgs.GenericIntScalar
-	11, // 10: protobuf_msgs.SensorOutput.genericFloatScalar:type_name -> protobuf_msgs.GenericFloatScalar
-	12, // 11: protobuf_msgs.SensorOutput.genericBoolScalar:type_name -> protobuf_msgs.GenericBoolScalar
-	13, // 12: protobuf_msgs.SensorOutput.genericStringScalar:type_name -> protobuf_msgs.GenericStringScalar
-	14, // 13: protobuf_msgs.SensorOutput.genericIntArray:type_name -> protobuf_msgs.GenericIntArray
-	15, // 14: protobuf_msgs.SensorOutput.genericFloatArray:type_name -> protobuf_msgs.GenericFloatArray
-	16, // 15: protobuf_msgs.SensorOutput.genericBoolArray:type_name -> protobuf_msgs.GenericBoolArray
-	17, // 16: protobuf_msgs.SensorOutput.genericStringArray:type_name -> protobuf_msgs.GenericStringArray
-	18, // 17: protobuf_msgs.SensorOutput.lidarOutput:type_name -> protobuf_msgs.LidarSensorOutput
-	19, // 18: protobuf_msgs.SensorOutput.energyOutput:type_name -> protobuf_msgs.EnergySensorOutput
-	19, // [19:19] is the sub-list for method output_type
-	19, // [19:19] is the sub-list for method input_type
-	19, // [19:19] is the sub-list for extension type_name
-	19, // [19:19] is the sub-list for extension extendee
-	0,  // [0:19] is the sub-list for field type_name
+	9,  // 8: protobuf_msgs.SensorOutput.genericIntScalar:type_name -> protobuf_msgs.GenericIntScalar
+	10, // 9: protobuf_msgs.SensorOutput.genericFloatScalar:type_name -> protobuf_msgs.GenericFloatScalar
+	11, // 10: protobuf_msgs.SensorOutput.genericBoolScalar:type_name -> protobuf_msgs.GenericBoolScalar
+	12, // 11: protobuf_msgs.SensorOutput.genericStringScalar:type_name -> protobuf_msgs.GenericStringScalar
+	13, // 12: protobuf_msgs.SensorOutput.genericIntArray:type_name -> protobuf_msgs.GenericIntArray
+	14, // 13: protobuf_msgs.SensorOutput.genericFloatArray:type_name -> protobuf_msgs.GenericFloatArray
+	15, // 14: protobuf_msgs.SensorOutput.genericBoolArray:type_name -> protobuf_msgs.GenericBoolArray
+	16, // 15: protobuf_msgs.SensorOutput.genericStringArray:type_name -> protobuf_msgs.GenericStringArray
+	17, // 16: protobuf_msgs.SensorOutput.lidarOutput:type_name -> protobuf_msgs.LidarSensorOutput
+	18, // 17: protobuf_msgs.SensorOutput.energyOutput:type_name -> protobuf_msgs.EnergySensorOutput
+	18, // [18:18] is the sub-list for method output_type
+	18, // [18:18] is the sub-list for method input_type
+	18, // [18:18] is the sub-list for extension type_name
+	18, // [18:18] is the sub-list for extension extendee
+	0,  // [0:18] is the sub-list for field type_name
 }
 
 func init() { file_outputs_wrapper_proto_init() }
@@ -522,9 +503,8 @@ func file_outputs_wrapper_proto_init() {
 		(*SensorOutput_ControllerOutput)(nil),
 		(*SensorOutput_ImuOutput)(nil),
 		(*SensorOutput_BatteryOutput)(nil),
-		(*SensorOutput_RpmOuput)(nil),
+		(*SensorOutput_RpmOutput)(nil),
 		(*SensorOutput_LuxOutput)(nil),
-		(*SensorOutput_LaptimeOutput)(nil),
 		(*SensorOutput_GenericIntScalar)(nil),
 		(*SensorOutput_GenericFloatScalar)(nil),
 		(*SensorOutput_GenericBoolScalar)(nil),

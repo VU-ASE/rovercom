@@ -21,11 +21,12 @@ const (
 	_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)
 )
 
+// This is the message format that a battery service can send out. It contains information about the battery's current state.
 type BatterySensorOutput struct {
 	state                protoimpl.MessageState `protogen:"open.v1"`
-	CurrentOutputVoltage float32                `protobuf:"fixed32,1,opt,name=currentOutputVoltage,proto3" json:"currentOutputVoltage,omitempty"`
-	WarnVoltage          float32                `protobuf:"fixed32,2,opt,name=warnVoltage,proto3" json:"warnVoltage,omitempty"`
-	KillVoltage          float32                `protobuf:"fixed32,3,opt,name=killVoltage,proto3" json:"killVoltage,omitempty"`
+	CurrentOutputVoltage float32                `protobuf:"fixed32,1,opt,name=currentOutputVoltage,proto3" json:"currentOutputVoltage,omitempty"` // The current voltage of the battery in volts
+	WarnVoltage          float32                `protobuf:"fixed32,2,opt,name=warnVoltage,proto3" json:"warnVoltage,omitempty"`                   // The voltage at which the framework will warn the user about low battery
+	KillVoltage          float32                `protobuf:"fixed32,3,opt,name=killVoltage,proto3" json:"killVoltage,omitempty"`                   // The voltage at which the framework will shut down the debix to prevent undercharge
 	unknownFields        protoimpl.UnknownFields
 	sizeCache            protoimpl.SizeCache
 }

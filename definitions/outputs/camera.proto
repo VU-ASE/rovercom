@@ -5,57 +5,22 @@ package protobuf_msgs;
 option go_package = "ase/pb_outputs";
 
 //
-// Messages that can be outputed by a camera module
+// This is the message format that a camera-like service can send out. For example, the official ASE imaging service
+// uses this output format. This can then be used by (for example) a controller, to determine how to steer, to stay
+// on the track, or to detect obstacles, intersections, etc.
 //
+message CameraSensorOutput {
+    // Basic information, contains everything you need to know to steer and compute the middle of the track
+    Resolution resolution = 1; // Resolution of the image in pixels
+    repeated HorizontalScan horizontalScans = 2; // Horizontal scans of the track, where each scan returns the track edges it finds in the image
+    repeated DetectedObjects detectedObjects = 3;
 
-message CanvasObject {
-    message Point {
-        uint32 x = 1;
-        uint32 y = 2;
-    }
-
-    message Color {
-        uint32 r = 1;
-        uint32 g = 2;
-        uint32 b = 3;
-        uint32 a = 4;
-    }
-
-    message Line {
-        Point start = 1;
-        Point end = 2;
-        uint32 width = 3;
-        Color color = 4;
-    }
-
-    message Rectangle {
-        Point topLeft = 1;
-        Point bottomRight = 2;
-        uint32 width = 3;
-        Color color = 4;
-    }
-
-    message Circle {
-        Point center = 1;
-        uint32 radius = 2;
-        uint32 width = 3;
-        Color color = 4;
-    }
-
-    oneof object {
-        Line line = 1;
-        Rectangle rectangle = 2;
-        Circle circle = 3;
-    }
+    // Additional information that can be used to debug the image processing
+    // if present, it is rendered in roverctl-web
+    DebugFrame debugFrame = 4; 
 }
 
-message Canvas {
-    uint32 width = 1;
-    uint32 height = 2;
-    repeated CanvasObject objects = 3;
-}
-
-// Possible Objects the Imaging Module may detect
+// Possible Objects the Imaging Service may detect
 enum DetectedObjects {
     FINISH_LINE         = 0; /* Finish_line_detected */
     OFF_TRACK           = 1; /* Car no longer on the track */
@@ -69,34 +34,45 @@ enum DetectedObjects {
     S_TURN              = 9;  /* Detected S turn (double u turn) */
 }
 
-//
-// The following sensor outputs are specific to the sensor type, bring your own sensor and add your own output here!
-//
-message CameraSensorOutput {
-    // Defined by the Path Planner
-    message Trajectory {
-        message Point {
-            int32 x = 1;
-            int32 y = 2;
-        }
-        repeated Point points = 1;
-        uint32 width = 2;
-        uint32 height = 3;
+message Resolution {
+    uint32 width = 1;  // Width of the image in pixels
+    uint32 height = 2; // Height of the image in pixels
+}
+
+message HorizontalScan {    
+    uint32 xLeft = 1; // Leftmost point in the scan in pixels (is left edge of the track)
+    uint32 xRight = 2; // Rightmost point in the scan in pixels (is right edge of the track)
+    uint32 y = 3; // Y coordinate of the scan in pixels
+}
+
+message DebugFrame {
+    // (Compressed) JPEG image of the camera output, useful for debugging
+    // just JPEG bytes, that will be rendered in roverctl-web
+    bytes jpeg = 1;
+    // A "canvas" that you can "draw" on, for example by placing points, these are also rendered in roverctl-web
+    Canvas canvas = 5; 
+}
+
+message CanvasObject {
+    message Point {
+        uint32 x = 1;
+        uint32 y = 2;
     }
 
-    Trajectory trajectory = 1;
-
-    message DebugFrame {
-        bytes jpeg = 1;
-        // if image livestreaming is disabled, or imaging module wants to draw additional information on the image, it can be done here
-        Canvas canvas = 5; 
-    }
-    
-    DebugFrame debug_frame = 2;
-
-    message Objects {
-        repeated DetectedObjects items = 1;
+    message Circle {
+        Point center = 1;
+        uint32 radius = 2;
+        uint32 width = 3;
     }
 
-    Objects objects = 3;
+    oneof object {
+        Circle circle = 1;
+    }
+}
+
+message Canvas {
+    // The width and height are a legacy feature, they should be the same as the resolution of the camera
+    uint32 width = 1;
+    uint32 height = 2;
+    repeated CanvasObject objects = 3;
 }
