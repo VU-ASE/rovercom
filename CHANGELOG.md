@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.0.0](https://github.com/VU-ASE/rovercom/compare/v1.7.0...v2.0.0) (2025-07-31)
+
+
+### ⚠ BREAKING CHANGES
+
+* future proof camera and imaging definitions
+
+### Features
+
+* future proof camera and imaging definitions ([042a261](https://github.com/VU-ASE/rovercom/commit/042a261b0b886615e16bb6fe0f2583bd0695dc3f))
+* rovercom for c# ([8435819](https://github.com/VU-ASE/rovercom/commit/84358192fce2aa0a789b4a9798446bdcb8e4e1ab))
+
 ## [1.7.0](https://github.com/VU-ASE/rovercom/compare/v1.6.0...v1.7.0) (2025-03-29)
 
 
