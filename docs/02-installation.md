@@ -44,6 +44,33 @@ You can find the transpiled C header and source files in our repository [here](h
   </TabItem>
   <TabItem value="roverlib-typescript" label="TypeScript">
 
+We recommend using `bun` to install `rovercom` from our repository directly. You can do so by running:
+
+```bash
+# Install lateset version
+bun add "github:VU-ASE/rovercom"
+# Install a specific version
+bun add "github:VU-ASE/rovercom#v2.0.0"
+```
+
+Then, add the following postinstall script to your _package.json_ file:
+
+```json
+...
+  "scripts": {
+    "postinstall": "cp -r node_modules/rovercom/packages/typescript/. node_modules/rovercom-temp && rm -rf node_modules/rovercom && mv node_modules/rovercom-temp node_modules/rovercom",
+...
+```
+
+After installation, the package is available as `rovercom`. Which you can import like so:
+
+```typescript
+// Import control types from rovercom
+import { ConnectionState, ControlError } from 'rovercom/gen/control/control';
+```
+
+## Using `NPM` (legacy)
+
 You can install `rovercom` as an NPM package for your TypeScript project as follows:
 
 ```bash
